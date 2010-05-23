@@ -1,0 +1,8 @@
+PasswordMaker for the Iphone
+
+Based on the algorithms on http://passwordmaker.org/ to generate the passwords so compatible with the password generated on the website. 
+
+With the proliferation of online resources these days, you probably have many different usernames and passwords that you have to remember: banks, investment accounts, bill pay systems, credit card sites, email accounts, instant messenger accounts, photo sites, blogging tools - and countless others - all require a username and password to be able to access them. If you're like most people, you probably have only a few - or maybe just one or two - simple passwords you use for all of your accounts, because it's easier to remember just one or two than it is dozens. To make matters worse, the one or two passwords that you do use are probably fairly simple, like your dog's name, your birthday, or your spouse or child's name. The problem is, this is incredibly risky.
+
+Generate passwords based on input.  Input of a master password(to generate all other passwords), plus a url to a website, plus any other data, to generate a password.
+There is no need to every write down or store any password generated, as if you give the application the same input it will generate the same password everytime.

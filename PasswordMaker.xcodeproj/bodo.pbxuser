@@ -1,0 +1,250 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* PasswordMakerAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {843, 676}}";
+			sepNavSelRange = "{595, 0}";
+			sepNavVisRange = "{0, 1503}";
+		};
+	};
+	1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {843, 2834}}";
+			sepNavSelRange = "{2904, 0}";
+			sepNavVisRange = "{2163, 1215}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* PasswordMaker */ = {
+		activeExec = 0;
+		executables = (
+			CBC32E0F11A854B300FB6109 /* PasswordMaker */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CBC32E0F11A854B300FB6109 /* PasswordMaker */;
+		activeSDKPreference = iphonesimulator3.1.3;
+		activeTarget = D78778561102F2CF00EEA918 /* LogicTests */;
+		codeSenseManager = CBC32E2A11A854BD00FB6109 /* Code sense */;
+		executables = (
+			CBC32E0F11A854B300FB6109 /* PasswordMaker */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					665,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					314,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 296244403;
+			PBXWorkspaceStateSaveDate = 296244403;
+		};
+		perUserProjectItems = {
+			CBC32E3311A8553D00FB6109 /* PBXTextBookmark */ = CBC32E3311A8553D00FB6109 /* PBXTextBookmark */;
+			CBC32E3411A8553D00FB6109 /* PBXTextBookmark */ = CBC32E3411A8553D00FB6109 /* PBXTextBookmark */;
+			CBC32E3511A8553D00FB6109 /* PBXTextBookmark */ = CBC32E3511A8553D00FB6109 /* PBXTextBookmark */;
+			CBC32E4E11A8562800FB6109 /* PlistBookmark */ = CBC32E4E11A8562800FB6109 /* PlistBookmark */;
+			CBC32E5211A8573000FB6109 /* PBXTextBookmark */ = CBC32E5211A8573000FB6109 /* PBXTextBookmark */;
+			CBC32E5311A8573000FB6109 /* PBXTextBookmark */ = CBC32E5311A8573000FB6109 /* PBXTextBookmark */;
+			CBC32E5411A8573000FB6109 /* PBXTextBookmark */ = CBC32E5411A8573000FB6109 /* PBXTextBookmark */;
+			CBC32E5511A8573000FB6109 /* PBXTextBookmark */ = CBC32E5511A8573000FB6109 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CBC32E2911A854BD00FB6109 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	CBC32E0F11A854B300FB6109 /* PasswordMaker */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PasswordMaker;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	CBC32E2911A854BD00FB6109 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CBC32E2A11A854BD00FB6109 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CBC32E3311A8553D00FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D787791A11037A0500EEA918 /* HashSHA1Test.m */;
+		name = "HashSHA1Test.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 970;
+		vrLoc = 0;
+	};
+	CBC32E3411A8553D00FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D74E130311095E5D00635A40 /* RipemdHashTest.h */;
+		name = "RipemdHashTest.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 301;
+		vrLoc = 0;
+	};
+	CBC32E3511A8553D00FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D74E130411095E5D00635A40 /* RipemdHashTest.m */;
+		name = "RipemdHashTest.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1140;
+		vrLoc = 0;
+	};
+	CBC32E4E11A8562800FB6109 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = D7734FE81102EACA00A2872B /* Unit Test-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/bodo/code/passwordmaker_iphone/Unit Test-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	CBC32E5211A8573000FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D79A3C9D11069FCE0065B5A0 /* LeetTest.m */;
+		name = "LeetTest.m: 32";
+		rLen = 0;
+		rLoc = 999;
+		rType = 0;
+		vrLen = 1162;
+		vrLoc = 357;
+	};
+	CBC32E5311A8573000FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */;
+		name = "PasswordMakerAppDelegate.m: 86";
+		rLen = 0;
+		rLoc = 2904;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 2163;
+	};
+	CBC32E5411A8573000FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* PasswordMakerAppDelegate.h */;
+		name = "PasswordMakerAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1503;
+		vrLoc = 0;
+	};
+	CBC32E5511A8573000FB6109 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* PasswordMakerAppDelegate.h */;
+		name = "PasswordMakerAppDelegate.h: 14";
+		rLen = 0;
+		rLoc = 595;
+		rType = 0;
+		vrLen = 1503;
+		vrLoc = 0;
+	};
+	D74E130311095E5D00635A40 /* RipemdHashTest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1089, 540}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 301}";
+			sepNavWindowFrame = "{{183, 100}, {1148, 668}}";
+		};
+	};
+	D74E130411095E5D00635A40 /* RipemdHashTest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {7908, 1937}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1140}";
+		};
+	};
+	D78778561102F2CF00EEA918 /* LogicTests */ = {
+		activeExec = 0;
+	};
+	D787791A11037A0500EEA918 /* HashSHA1Test.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {7908, 1534}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 970}";
+		};
+	};
+	D79A3C9D11069FCE0065B5A0 /* LeetTest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {768, 1508}}";
+			sepNavSelRange = "{999, 0}";
+			sepNavVisRange = "{357, 1162}";
+			sepNavWindowFrame = "{{160, 121}, {1148, 668}}";
+		};
+	};
+}

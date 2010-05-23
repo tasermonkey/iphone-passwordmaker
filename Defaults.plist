@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HashAlgo</key>
+	<string>MD5</string>
+	<key>PassLength</key>
+	<integer>12</integer>
+	<key>UserName</key>
+	<string></string>
+	<key>modifier</key>
+	<string></string>
+	<key>prefix</key>
+	<string></string>
+	<key>suffix</key>
+	<string></string>
+	<key>characters</key>
+	<string>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</string>
+	<key>leetType</key>
+	<string>NONE</string>
+	<key>leetLevel</key>
+	<integer>-1</integer>
+	<key>profileName</key>
+	<string></string>
+	<key>profiles</key>
+	<array/>
+</dict>
+</plist>

@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* PasswordMakerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		D718D58611027F52003B7FFC /* Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = D718D58511027F52003B7FFC /* Hasher.m */; };
+		D733F2D61104C7D8005C2F8D /* CharacterSetSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D733F2D51104C7D8005C2F8D /* CharacterSetSelectionController.m */; };
+		D733F3271104D3FC005C2F8D /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D733F3261104D3FC005C2F8D /* ApplicationDelegate.m */; };
+		D733F446110502F0005C2F8D /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D733F445110502F0005C2F8D /* Defaults.plist */; };
+		D733F525110565CE005C2F8D /* leet.m in Sources */ = {isa = PBXBuildFile; fileRef = D733F524110565CE005C2F8D /* leet.m */; };
+		D74E11221109354600635A40 /* HMacer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E11211109354600635A40 /* HMacer.cpp */; };
+		D74E12551109524E00635A40 /* ripemd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E12541109524E00635A40 /* ripemd.cpp */; };
+		D74E13101109601500635A40 /* RipemdHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D74E130411095E5D00635A40 /* RipemdHashTest.m */; };
+		D74E1325110960F500635A40 /* ripemd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E12541109524E00635A40 /* ripemd.cpp */; };
+		D74E13281109610D00635A40 /* HMacer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E11211109354600635A40 /* HMacer.cpp */; };
+		D74E13A211096DC600635A40 /* iphone_store_desc in Resources */ = {isa = PBXBuildFile; fileRef = D74E13A111096DC600635A40 /* iphone_store_desc */; };
+		D7785BD011491DA3000F9800 /* HmacTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7785BCB11491C6A000F9800 /* HmacTest.m */; };
+		D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D77E3ADD110C098100E533BB /* ProfileSelectionController.m */; };
+		D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = D784D61B1139875F00FD2913 /* AlertPrompt.m */; };
+		D78778661102F34D00EEA918 /* HashMD5Test.m in Sources */ = {isa = PBXBuildFile; fileRef = D78778641102F32000EEA918 /* HashMD5Test.m */; };
+		D78778C01102F80300EEA918 /* Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = D718D58511027F52003B7FFC /* Hasher.m */; };
+		D787791F11037B3500EEA918 /* HashSHA1Test.m in Sources */ = {isa = PBXBuildFile; fileRef = D787791A11037A0500EEA918 /* HashSHA1Test.m */; };
+		D787793011037DBA00EEA918 /* HashSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D787792F11037DBA00EEA918 /* HashSelectionController.m */; };
+		D79A3C6711069EBF0065B5A0 /* leet.m in Sources */ = {isa = PBXBuildFile; fileRef = D733F524110565CE005C2F8D /* leet.m */; };
+		D79A3C9E11069FCE0065B5A0 /* LeetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A3C9D11069FCE0065B5A0 /* LeetTest.m */; };
+		D79A3D2A1106A79A0065B5A0 /* LeetSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A3D291106A79A0065B5A0 /* LeetSelectionController.m */; };
+		D7A42E791123BC3100B2FA55 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7A42E781123BC3100B2FA55 /* appicon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* PasswordMakerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordMakerAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordMakerAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* PasswordMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* PasswordMaker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordMaker_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* PasswordMaker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PasswordMaker-Info.plist"; path = "../PasswordMaker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D718D58411027F52003B7FFC /* Hasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hasher.h; sourceTree = "<group>"; };
+		D718D58511027F52003B7FFC /* Hasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hasher.m; sourceTree = "<group>"; };
+		D733F2D41104C7D8005C2F8D /* CharacterSetSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterSetSelectionController.h; sourceTree = "<group>"; };
+		D733F2D51104C7D8005C2F8D /* CharacterSetSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterSetSelectionController.m; sourceTree = "<group>"; };
+		D733F3251104D3FC005C2F8D /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
+		D733F3261104D3FC005C2F8D /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		D733F445110502F0005C2F8D /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = SOURCE_ROOT; };
+		D733F523110565CE005C2F8D /* leet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leet.h; sourceTree = "<group>"; };
+		D733F524110565CE005C2F8D /* leet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leet.m; sourceTree = "<group>"; };
+		D74E111D110933D000635A40 /* hash_type_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash_type_enum.h; sourceTree = "<group>"; };
+		D74E11201109354600635A40 /* HMacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMacer.h; sourceTree = "<group>"; };
+		D74E11211109354600635A40 /* HMacer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HMacer.cpp; sourceTree = "<group>"; };
+		D74E12541109524E00635A40 /* ripemd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ripemd.cpp; sourceTree = "<group>"; };
+		D74E12561109526200635A40 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
+		D74E130311095E5D00635A40 /* RipemdHashTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RipemdHashTest.h; sourceTree = "<group>"; };
+		D74E130411095E5D00635A40 /* RipemdHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RipemdHashTest.m; sourceTree = "<group>"; };
+		D74E13A111096DC600635A40 /* iphone_store_desc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iphone_store_desc; sourceTree = "<group>"; };
+		D7734FE81102EACA00A2872B /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit Test-Info.plist"; path = "../Unit Test-Info.plist"; sourceTree = "<group>"; };
+		D7785BCA11491C6A000F9800 /* HmacTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmacTest.h; sourceTree = "<group>"; };
+		D7785BCB11491C6A000F9800 /* HmacTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmacTest.m; sourceTree = "<group>"; };
+		D77E3ADC110C098100E533BB /* ProfileSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionController.h; sourceTree = "<group>"; };
+		D77E3ADD110C098100E533BB /* ProfileSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSelectionController.m; sourceTree = "<group>"; };
+		D784D61A1139875F00FD2913 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
+		D784D61B1139875F00FD2913 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
+		D78778571102F2CF00EEA918 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D78778581102F2CF00EEA918 /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "LogicTests-Info.plist"; path = "../LogicTests-Info.plist"; sourceTree = "<group>"; };
+		D78778631102F32000EEA918 /* HashMD5Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashMD5Test.h; sourceTree = "<group>"; };
+		D78778641102F32000EEA918 /* HashMD5Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashMD5Test.m; sourceTree = "<group>"; };
+		D787791911037A0500EEA918 /* HashSHA1Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashSHA1Test.h; sourceTree = "<group>"; };
+		D787791A11037A0500EEA918 /* HashSHA1Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashSHA1Test.m; sourceTree = "<group>"; };
+		D787792E11037DBA00EEA918 /* HashSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashSelectionController.h; sourceTree = "<group>"; };
+		D787792F11037DBA00EEA918 /* HashSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashSelectionController.m; sourceTree = "<group>"; };
+		D79A3C9C11069FCE0065B5A0 /* LeetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeetTest.h; sourceTree = "<group>"; };
+		D79A3C9D11069FCE0065B5A0 /* LeetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeetTest.m; sourceTree = "<group>"; };
+		D79A3D281106A79A0065B5A0 /* LeetSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeetSelectionController.h; sourceTree = "<group>"; };
+		D79A3D291106A79A0065B5A0 /* LeetSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeetSelectionController.m; sourceTree = "<group>"; };
+		D7A42E781123BC3100B2FA55 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D78778541102F2CF00EEA918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D74E12561109526200635A40 /* ripemd.h */,
+				D74E12541109524E00635A40 /* ripemd.cpp */,
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				1D3623240D0F684500981E51 /* PasswordMakerAppDelegate.h */,
+				1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */,
+				D718D58411027F52003B7FFC /* Hasher.h */,
+				D718D58511027F52003B7FFC /* Hasher.m */,
+				D787792E11037DBA00EEA918 /* HashSelectionController.h */,
+				D787792F11037DBA00EEA918 /* HashSelectionController.m */,
+				D733F2D41104C7D8005C2F8D /* CharacterSetSelectionController.h */,
+				D733F2D51104C7D8005C2F8D /* CharacterSetSelectionController.m */,
+				D733F523110565CE005C2F8D /* leet.h */,
+				D733F524110565CE005C2F8D /* leet.m */,
+				D79A3D281106A79A0065B5A0 /* LeetSelectionController.h */,
+				D79A3D291106A79A0065B5A0 /* LeetSelectionController.m */,
+				D74E111D110933D000635A40 /* hash_type_enum.h */,
+				D74E11201109354600635A40 /* HMacer.h */,
+				D74E11211109354600635A40 /* HMacer.cpp */,
+				D77E3ADC110C098100E533BB /* ProfileSelectionController.h */,
+				D77E3ADD110C098100E533BB /* ProfileSelectionController.m */,
+				D784D61A1139875F00FD2913 /* AlertPrompt.h */,
+				D784D61B1139875F00FD2913 /* AlertPrompt.m */,
+			);
+			name = Classes;
+			path = Sources/Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* PasswordMaker.app */,
+				D78778571102F2CF00EEA918 /* LogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				D78778621102F2FC00EEA918 /* Tests */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Sources */,
+				29B97317FDCFA39411CA2CEA /* resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* PasswordMaker_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				D733F3251104D3FC005C2F8D /* ApplicationDelegate.h */,
+				D733F3261104D3FC005C2F8D /* ApplicationDelegate.m */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				D7A42E781123BC3100B2FA55 /* appicon.png */,
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* PasswordMaker-Info.plist */,
+				D7734FE81102EACA00A2872B /* Unit Test-Info.plist */,
+				D78778581102F2CF00EEA918 /* LogicTests-Info.plist */,
+				D733F445110502F0005C2F8D /* Defaults.plist */,
+				D74E13A111096DC600635A40 /* iphone_store_desc */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D78778621102F2FC00EEA918 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D78778631102F32000EEA918 /* HashMD5Test.h */,
+				D78778641102F32000EEA918 /* HashMD5Test.m */,
+				D787791911037A0500EEA918 /* HashSHA1Test.h */,
+				D787791A11037A0500EEA918 /* HashSHA1Test.m */,
+				D79A3C9C11069FCE0065B5A0 /* LeetTest.h */,
+				D79A3C9D11069FCE0065B5A0 /* LeetTest.m */,
+				D74E130311095E5D00635A40 /* RipemdHashTest.h */,
+				D74E130411095E5D00635A40 /* RipemdHashTest.m */,
+				D7785BCA11491C6A000F9800 /* HmacTest.h */,
+				D7785BCB11491C6A000F9800 /* HmacTest.m */,
+			);
+			name = Tests;
+			path = Sources/Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* PasswordMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PasswordMaker" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PasswordMaker;
+			productName = PasswordMaker;
+			productReference = 1D6058910D05DD3D006BFB54 /* PasswordMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D78778561102F2CF00EEA918 /* LogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D787785B1102F2D000EEA918 /* Build configuration list for PBXNativeTarget "LogicTests" */;
+			buildPhases = (
+				D78778521102F2CF00EEA918 /* Resources */,
+				D78778531102F2CF00EEA918 /* Sources */,
+				D78778541102F2CF00EEA918 /* Frameworks */,
+				D78778551102F2CF00EEA918 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LogicTests;
+			productName = LogicTests;
+			productReference = D78778571102F2CF00EEA918 /* LogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PasswordMaker" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* PasswordMaker */,
+				D78778561102F2CF00EEA918 /* LogicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				D733F446110502F0005C2F8D /* Defaults.plist in Resources */,
+				D74E13A211096DC600635A40 /* iphone_store_desc in Resources */,
+				D7A42E791123BC3100B2FA55 /* appicon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D78778521102F2CF00EEA918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D78778551102F2CF00EEA918 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* PasswordMakerAppDelegate.m in Sources */,
+				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				D718D58611027F52003B7FFC /* Hasher.m in Sources */,
+				D787793011037DBA00EEA918 /* HashSelectionController.m in Sources */,
+				D733F2D61104C7D8005C2F8D /* CharacterSetSelectionController.m in Sources */,
+				D733F3271104D3FC005C2F8D /* ApplicationDelegate.m in Sources */,
+				D733F525110565CE005C2F8D /* leet.m in Sources */,
+				D79A3D2A1106A79A0065B5A0 /* LeetSelectionController.m in Sources */,
+				D74E11221109354600635A40 /* HMacer.cpp in Sources */,
+				D74E12551109524E00635A40 /* ripemd.cpp in Sources */,
+				D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */,
+				D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D78778531102F2CF00EEA918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D74E13281109610D00635A40 /* HMacer.cpp in Sources */,
+				D74E1325110960F500635A40 /* ripemd.cpp in Sources */,
+				D7785BD011491DA3000F9800 /* HmacTest.m in Sources */,
+				D74E13101109601500635A40 /* RipemdHashTest.m in Sources */,
+				D79A3C6711069EBF0065B5A0 /* leet.m in Sources */,
+				D787791F11037B3500EEA918 /* HashSHA1Test.m in Sources */,
+				D78778C01102F80300EEA918 /* Hasher.m in Sources */,
+				D78778661102F34D00EEA918 /* HashMD5Test.m in Sources */,
+				D79A3C9E11069FCE0065B5A0 /* LeetTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
+				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				PRODUCT_NAME = PasswordMaker;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
+				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				PRODUCT_NAME = PasswordMaker;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Release;
+		};
+		D72A44CF110E9AE300A1720B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = AppStore;
+		};
+		D72A44D0110E9AE300A1720B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
+				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "8551B603-C285-4623-BDE5-924B9C3A5708";
+			};
+			name = AppStore;
+		};
+		D72A44D1110E9AE300A1720B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphonesimulator3.1.2;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = AppStore;
+		};
+		D78778591102F2D000EEA918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphonesimulator3.1.2;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D787785A1102F2D000EEA918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphonesimulator3.1.2;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		D7BBC2EC111F1CB400E3ABC2 /* AdHoc Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = "AdHoc Distro";
+		};
+		D7BBC2ED111F1CB400E3ABC2 /* AdHoc Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
+				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "69692BB8-3E16-4992-8F81-7B9878DE0159";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69692BB8-3E16-4992-8F81-7B9878DE0159";
+			};
+			name = "AdHoc Distro";
+		};
+		D7BBC2EE111F1CB400E3ABC2 /* AdHoc Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphonesimulator3.1.2;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = "AdHoc Distro";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PasswordMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				D72A44D0110E9AE300A1720B /* AppStore */,
+				D7BBC2ED111F1CB400E3ABC2 /* AdHoc Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PasswordMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				D72A44CF110E9AE300A1720B /* AppStore */,
+				D7BBC2EC111F1CB400E3ABC2 /* AdHoc Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D787785B1102F2D000EEA918 /* Build configuration list for PBXNativeTarget "LogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D78778591102F2D000EEA918 /* Debug */,
+				D787785A1102F2D000EEA918 /* Release */,
+				D72A44D1110E9AE300A1720B /* AppStore */,
+				D7BBC2EE111F1CB400E3ABC2 /* AdHoc Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

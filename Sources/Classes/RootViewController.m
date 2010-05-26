@@ -62,6 +62,7 @@ static UIColor *thatTableTextColor ;
 - (id) initWithHasher:(Hasher*)hashObj {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		hasher = [hashObj retain] ;
+		inputURL = [self allocTextField:@"" keyboardType:UIKeyboardTypeURL] ;
 	}
 	return self ;
 }
@@ -85,8 +86,9 @@ static UIColor *thatTableTextColor ;
 		strinputUrl = @"" ;
 		strusername = @"" ;
 	}
+	if ( [inputURL.text length] == 0 )
+		inputURL.text = strinputUrl ;
 	masterPassword = [self allocTextField:strmasterPass isPassword:YES] ;
-	inputURL = [self allocTextField:strinputUrl keyboardType:UIKeyboardTypeURL] ;
 	passLength = [self allocTextField:[[NSNumber numberWithInteger:hasher.maxLen] stringValue]] ;
 	username = [self allocTextField:strusername] ;
 	modifier = [self allocTextField:hasher.counter] ;
@@ -161,6 +163,14 @@ static UIColor *thatTableTextColor ;
 	return NO ;
 }
 
+- (NSString*) inputURLText {
+	return inputURL.text ;
+}
+
+- (void) setInputURLText:(NSString*)newUrl {
+	inputURL.text = newUrl ;	
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -175,20 +185,6 @@ static UIColor *thatTableTextColor ;
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastAccess"] ;
 }
 
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
-	[masterPassword release] ;
-	[inputURL release] ;
-	[passLength release] ;
-	[username release] ;
-	[modifier release] ;
-	[prefix release] ;
-	[suffix release] ;
-	[generatedPassword release] ;
-	[copyPassword release] ;
-	
-}
 
 - (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str 
 					   andContentView:(UIView*)cview  {
@@ -335,8 +331,24 @@ static UIColor *thatTableTextColor ;
 	[self update_password_fields_color];
 }
 
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+	[masterPassword release] ;
+	[passLength release] ;
+	[username release] ;
+	[modifier release] ;
+	[prefix release] ;
+	[suffix release] ;
+	[generatedPassword release] ;
+	[copyPassword release] ;
+	
+}
+
 - (void)dealloc {
 	[hasher release] ;
+	[inputURL release] ;
     [super dealloc];
 }
 

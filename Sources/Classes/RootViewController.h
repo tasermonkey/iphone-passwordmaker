@@ -34,6 +34,7 @@
 	Hasher* hasher ;
 	BOOL masterPasswordHashMatches ;
 }
+@property (nonatomic, retain) NSString* inputURLText ;
 - (id) initWithHasher:(Hasher*)hashObj ;
 
 // private

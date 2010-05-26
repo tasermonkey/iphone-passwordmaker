@@ -157,6 +157,33 @@
 	[[NSUserDefaults standardUserDefaults] setObject:hasher.profileName forKey:@"profileName"] ;
 }
 
+- (NSDictionary *)parseQueryString:(NSString *)query {
+    NSMutableDictionary *dict = [[[NSMutableDictionary alloc] init] autorelease];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    
+    for (NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [dict setObject:val forKey:key];
+    }
+    return dict;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+	// Recover the string
+    if (!url) return NO ;
+	
+	if ( ! [url.host isEqualToString:@"getpassword"] )
+		return NO ;
+	
+	NSDictionary* arguments = [self parseQueryString:url.query] ;
+	NSString* target_url = [arguments objectForKey:@"url"] ;
+	rootViewController.inputURLText = target_url ;
+	return YES ;
+}
+
 - (BOOL) matchesSavedPassword:(NSString*)password {
 	if( hasher.savedPasswordHash ) {
 		NSString* newHash = [hasher generatePasswordWithMasterPassword:password 

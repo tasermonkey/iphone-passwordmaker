@@ -329,9 +329,9 @@ static UIColor *thatTableTextColor ;
 - (IBAction) copyPasswordClicked {
 	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 	[pasteboard setValue:generatedPassword.text forPasteboardType:@"public.utf8-plain-text"];
-	[[UIApplication getAppDelegate] setNewMasterPassword:generatedPassword.text] ;
+	[[UIApplication getAppDelegate] setNewMasterPassword:masterPassword.text] ;
 	masterPasswordHashMatches = 
-	[[UIApplication getAppDelegate] matchesSavedPassword:generatedPassword.text] ;
+	[[UIApplication getAppDelegate] matchesSavedPassword:masterPassword.text] ;
 	[self update_password_fields_color];
 }
 
@@ -354,7 +354,7 @@ static UIColor *thatTableTextColor ;
 	generatedPassword.contentOffset = CGPointMake(0, 0) ;
 	generatedPassword.contentSize = CGSizeMake( 145, 30) ;
 	masterPasswordHashMatches = 
-	  [[UIApplication getAppDelegate] matchesSavedPassword:generatedPassword.text] ;
+	  [[UIApplication getAppDelegate] matchesSavedPassword:masterPassword.text] ;
 
 	[self update_password_fields_color];
 }

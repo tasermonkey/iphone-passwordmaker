@@ -36,6 +36,7 @@
 		D79A3C9E11069FCE0065B5A0 /* LeetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A3C9D11069FCE0065B5A0 /* LeetTest.m */; };
 		D79A3D2A1106A79A0065B5A0 /* LeetSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A3D291106A79A0065B5A0 /* LeetSelectionController.m */; };
 		D7A42E791123BC3100B2FA55 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7A42E781123BC3100B2FA55 /* appicon.png */; };
+		D7B6B87311CAF5230039A24D /* MasterPasswordStorageHasher.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B6B87211CAF5230039A24D /* MasterPasswordStorageHasher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,8 @@
 		D79A3D281106A79A0065B5A0 /* LeetSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeetSelectionController.h; sourceTree = "<group>"; };
 		D79A3D291106A79A0065B5A0 /* LeetSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeetSelectionController.m; sourceTree = "<group>"; };
 		D7A42E781123BC3100B2FA55 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		D7B6B87111CAF5230039A24D /* MasterPasswordStorageHasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterPasswordStorageHasher.h; sourceTree = "<group>"; };
+		D7B6B87211CAF5230039A24D /* MasterPasswordStorageHasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterPasswordStorageHasher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				1D3623250D0F684500981E51 /* PasswordMakerAppDelegate.m */,
 				D718D58411027F52003B7FFC /* Hasher.h */,
 				D718D58511027F52003B7FFC /* Hasher.m */,
+				D7B6B87111CAF5230039A24D /* MasterPasswordStorageHasher.h */,
+				D7B6B87211CAF5230039A24D /* MasterPasswordStorageHasher.m */,
 				D787792E11037DBA00EEA918 /* HashSelectionController.h */,
 				D787792F11037DBA00EEA918 /* HashSelectionController.m */,
 				D733F2D41104C7D8005C2F8D /* CharacterSetSelectionController.h */,
@@ -335,6 +340,7 @@
 				D74E12551109524E00635A40 /* ripemd.cpp in Sources */,
 				D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */,
 				D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */,
+				D7B6B87311CAF5230039A24D /* MasterPasswordStorageHasher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,6 @@
 @implementation Hasher
 @synthesize profileName, counter, prefix, suffix, hashAlgo, maxLen ;
 @synthesize characters, leetSpeak, leetLevel ;
-@synthesize savedPasswordHash ;
 - (id) init {
 	if ( self = [super init] ) {
 		self.profileName = @"" ;
@@ -40,7 +39,6 @@
 		self.characters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" ;
 		self.leetLevel = 0 ;
 		self.leetSpeak = LEET_NONE ;
-		self.savedPasswordHash = @"" ;
 		isHmac = NO ;
 	}
 	return self ;
@@ -83,9 +81,14 @@
 	hashAlgo = [algoStr retain];
 }
 
--(NSString*) generatePassword:(NSString*)masterPass withData:(NSString*)data {
-	return [self hash:masterPass Text:data] ;
-	
+-(NSString*) generatePassword:(NSString*)key withData:(NSString*)text {
+	if ( isHmac == NO ) {
+		key = [key stringByAppendingString:text] ;
+		text = @"" ;
+		return [self hashText:key WithAlgo:algo AndCharacterSet:characters] ;
+	} else {
+		return [self hMacHashKey:key Text:text WithAlgo:algo AndCharacterSet:characters] ; 
+	}
 }
 
 - (NSString*) generatePasswordWithMasterPassword:(NSString*)masterPass 
@@ -131,64 +134,71 @@
 	return password ;
 }
 
-- (NSString*) hash:(NSString*)key Text:(NSString*)text {
+- (NSString*) hashText:(NSString*)text WithAlgo:(enum HASHTYPE)hash_algo
+	   AndCharacterSet:(NSString*)charSet {
 
-	if ( isHmac == NO ) {
-		key = [key stringByAppendingString:text] ;
-		text = @"" ;
+	const char *cStr = [text UTF8String]; /* since some characters are more than 1 char wide  */
+	CC_LONG cStrLen = strlen(cStr) ;
+
+	if ( algo == HASHTYPE_MD5 ) 
+	{	
+		unsigned char result[CC_MD5_DIGEST_LENGTH];
+		CC_MD5( cStr, cStrLen, result );
+		return [Hasher rstr2any:result charSet:charSet length:CC_MD5_DIGEST_LENGTH] ;	
+	} else if ( algo == HASHTYPE_SHA1 ) {
+		unsigned char result[CC_SHA1_DIGEST_LENGTH];
+		CC_SHA1( cStr, cStrLen, result );
+		return [Hasher rstr2any:result charSet:charSet length:CC_SHA1_DIGEST_LENGTH] ;
+	} else if ( algo == HASHTYPE_SHA256 ) {
+		unsigned char result[CC_SHA256_DIGEST_LENGTH];
+		CC_SHA256( cStr, cStrLen, result );
+		return [Hasher rstr2any:result charSet:charSet length:CC_SHA256_DIGEST_LENGTH] ;		
+	} else if ( algo == HASHTYPE_MD4 ) {
+		unsigned char result[CC_MD4_DIGEST_LENGTH];
+		CC_MD4( cStr, cStrLen, result );
+		return [Hasher rstr2any:result charSet:charSet length:CC_MD4_DIGEST_LENGTH] ;
+	} else if ( algo == HASHTYPE_RIPEMD160 ) {
+		unsigned char result[RIPEMD160_DIGESTSIZE];
+		hash160_ripemd(  cStr, cStrLen, result ) ;
+		return [Hasher rstr2any:result charSet:charSet length:RIPEMD160_DIGESTSIZE] ;		 
+	} else {
+		return @"" ;
 	}
+}
+
+- (NSString*) hMacHashKey:(NSString*)key Text:(NSString*)text WithAlgo:(enum HASHTYPE)hash_algo
+		  AndCharacterSet:(NSString*)charSet {
 	const char *cStr = [key UTF8String]; /* since some characters are more than 1 char wide  */
 	CC_LONG cStrLen = strlen(cStr) ;
 	
 	const char *cStrTxt = [text UTF8String]; /* since some characters are more than 1 char wide  */
 	CC_LONG cStrTxtLen = strlen(cStrTxt) ;
 	
-	if ( algo == HASHTYPE_MD5 ) 
-	{	
-		unsigned char result[CC_MD5_DIGEST_LENGTH];
-		CC_MD5( cStr, cStrLen, result );
-		return [Hasher rstr2any:result charSet:characters length:CC_MD5_DIGEST_LENGTH] ;	
-	} else if ( algo == HASHTYPE_SHA1 ) {
-		unsigned char result[CC_SHA1_DIGEST_LENGTH];
-		CC_SHA1( cStr, cStrLen, result );
-		return [Hasher rstr2any:result charSet:characters length:CC_SHA1_DIGEST_LENGTH] ;
-	} else if ( algo == HASHTYPE_SHA256 ) {
-		unsigned char result[CC_SHA256_DIGEST_LENGTH];
-		CC_SHA256( cStr, cStrLen, result );
-		return [Hasher rstr2any:result charSet:characters length:CC_SHA256_DIGEST_LENGTH] ;		
-	} else if ( algo == HASHTYPE_MD4 ) {
-		unsigned char result[CC_MD4_DIGEST_LENGTH];
-		CC_MD4( cStr, cStrLen, result );
-		return [Hasher rstr2any:result charSet:characters length:CC_MD4_DIGEST_LENGTH] ;
-	} else if ( algo == HASHTYPE_HMAC_MD5 ) {
+	if ( algo == HASHTYPE_HMAC_MD5 ) {
 		unsigned char result[CC_MD5_DIGEST_LENGTH];
 		hmac_md5( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:CC_MD5_DIGEST_LENGTH] ;		
+		return [Hasher rstr2any:result charSet:charSet length:CC_MD5_DIGEST_LENGTH] ;		
 	} else if ( algo == HASHTYPE_HMAC_SHA1 ) {
 		unsigned char result[CC_SHA1_DIGEST_LENGTH];
 		hmac_sha1( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:CC_SHA1_DIGEST_LENGTH] ;
+		return [Hasher rstr2any:result charSet:charSet length:CC_SHA1_DIGEST_LENGTH] ;
 	} else if ( algo == HASHTYPE_HMAC_SHA256 ) {
 		unsigned char result[CC_SHA256_DIGEST_LENGTH];
 		hmac_sha256( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:CC_SHA256_DIGEST_LENGTH] ;		
+		return [Hasher rstr2any:result charSet:charSet length:CC_SHA256_DIGEST_LENGTH] ;		
 	} else if ( algo == HASHTYPE_HMAC_MD4 ) {
 		unsigned char result[CC_MD4_DIGEST_LENGTH];
 		hmac_md4( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:CC_MD4_DIGEST_LENGTH] ;
-	} else if ( algo == HASHTYPE_RIPEMD160 ) {
-		unsigned char result[RIPEMD160_DIGESTSIZE];
-		hash160_ripemd(  cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:RIPEMD160_DIGESTSIZE] ;		
+		return [Hasher rstr2any:result charSet:charSet length:CC_MD4_DIGEST_LENGTH] ;	
 	} else if ( algo == HASHTYPE_HMAC_RIPEMD160 ) {		
 		unsigned char result[RIPEMD160_DIGESTSIZE];
-		hash160_ripemd(  cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:characters length:RIPEMD160_DIGESTSIZE] ;	
+		hmac_ripemd160( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
+		return [Hasher rstr2any:result charSet:charSet length:RIPEMD160_DIGESTSIZE] ;	
 	} else {
 		return @"" ;
 	}
-
 }
+
 
 + (NSString*) rstr2any:(unsigned char *)input charSet:(NSString*)encoding length:(NSInteger)length
 {
@@ -296,7 +306,6 @@
 	[prefix release ] ; 
 	[counter release] ;
 	[profileName release] ;
-	[savedPasswordHash release];
 	[super dealloc];
 }
 

@@ -52,23 +52,28 @@
 					 @"Symbols", SYMS,
 					 nil ] ;
 	
+	[self createStoreMasterHasher] ;
+	
 	rootViewController = [[RootViewController alloc] initWithHasher:hasher] ;
 	navigationController = [[UINavigationController alloc] 
-							initWithRootViewController:rootViewController];
+							initWithRootViewController:rootViewController] ;
 	self.navigationController = navigationController ;
-	[window addSubview:[navigationController view]];
-    [window makeKeyAndVisible];
+	[window addSubview:[navigationController view]] ;
+    [window makeKeyAndVisible] ;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	[self saveHasherProfile] ;
 	[[NSUserDefaults standardUserDefaults] setObject:profileList forKey:@"profiles"] ;
+	[[NSUserDefaults standardUserDefaults] setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
 	[rootViewController applicationWillTerminate:application] ;
 	[rootViewController.view removeFromSuperview] ;
 	[rootViewController release] ;
 	[charSetNames release] ;
 	[hasher release] ;
+	[storeMasterHasher release] ;
 	hasher = nil ;
+	storeMasterHasher = nil ;
 }
 
 #pragma mark -
@@ -126,7 +131,6 @@
 		hasher.characters = [dict objectForKey:@"characters"] ;
 		hasher.leetSpeak = [self leetTypeFromSettingString:[dict objectForKey:@"leetType"] ] ;
 		hasher.leetLevel = [ (NSNumber*) [dict objectForKey:@"leetLevel"] integerValue ] ;
-		hasher.savedPasswordHash = [dict objectForKey:@"savedPasswordHash"] ;
 	} else {
 		[self saveHasherProfile] ;
 	}
@@ -150,27 +154,27 @@
 	[dict setValue:hasher.characters forKey:@"characters"] ;
 	[dict setValue:[self settingStringFromLeetType:hasher.leetSpeak] forKey:@"leetType"] ;
 	[dict setValue:[NSNumber numberWithInteger:hasher.leetLevel] forKey:@"leetLevel"] ;
-	[dict setValue:hasher.savedPasswordHash forKey:@"savedPasswordHash"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:dict forKey:profName] ;
 	[dict release] ;
 	[self addProfile:hasher.profileName] ;
 	[[NSUserDefaults standardUserDefaults] setObject:hasher.profileName forKey:@"profileName"] ;
 }
 
+- (void) createStoreMasterHasher {
+	storeMasterHasher = [[MasterPasswordStorageHasher alloc] initWithPasswordHash:[[NSUserDefaults standardUserDefaults] 
+															  objectForKey:@"masterpasshash"]] ;
+}
+
+- (BOOL) noMasterPasswordStored {
+	return storeMasterHasher.noMasterPasswordStored ;
+}
+
 - (BOOL) matchesSavedPassword:(NSString*)password {
-	if( hasher.savedPasswordHash ) {
-		NSString* newHash = [hasher generatePasswordWithMasterPassword:password 
-																   Url:@"__master_password__" 
-															  Username:@"123876"] ;
-		return [newHash compare:hasher.savedPasswordHash] == NSOrderedSame;
-	}
-	return NO ;
+	return [storeMasterHasher matchesPassword:password] ;
 }
 
 - (void) setNewMasterPassword:(NSString*)password {
-	hasher.savedPasswordHash = [hasher generatePasswordWithMasterPassword:password
-																	  Url:@"__master_password__" 
-																 Username:@"123876"] ;
+	[storeMasterHasher setNewMasterPassword:password] ;
 }
 
 
@@ -207,6 +211,7 @@
 - (void)dealloc {
 	[profileList release] ;
 	[hasher release] ;
+	[storeMasterHasher release];
 	[navigationController release];
 	[window release];
 	[super dealloc];

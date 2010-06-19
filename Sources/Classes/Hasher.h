@@ -32,8 +32,6 @@
 	enum leetType leetSpeak ;
 	BOOL isHmac ;
 	NSInteger leetLevel ;
-	
-	NSString* savedPasswordHash ;
 }
 
 - (id) init ;
@@ -48,14 +46,16 @@
 @property (assign, nonatomic) enum leetType leetSpeak ;
 @property (assign, nonatomic) NSInteger leetLevel ;
 
-@property (retain, nonatomic) NSString* savedPasswordHash ;
-
 - (NSArray*) allHashAlgos ;
 
 
 - (NSString*) generatePasswordWithMasterPassword:(NSString*)masterPass 
 											 Url:(NSString*)url Username:(NSString*)user ;
-// private:
-- (NSString*) hash:(NSString*)key Text:(NSString*)text;
+// protected:
+- (NSString*) hashText:(NSString*)text WithAlgo:(enum HASHTYPE)hash_algo
+	   AndCharacterSet:(NSString*)charSet;
+- (NSString*) hMacHashKey:(NSString*)key Text:(NSString*)text WithAlgo:(enum HASHTYPE)hash_algo 
+		  AndCharacterSet:(NSString*)charSet;
 + (NSString*) rstr2any:(unsigned char *)input charSet:(NSString*)encoding length:(NSInteger)length ;
+
 @end

@@ -19,6 +19,7 @@
 
 #import "RootViewController.h"
 #import "Hasher.h"
+#import "MasterPasswordStorageHasher.h"
 
 @interface PasswordMakerAppDelegate : NSObject <UIApplicationDelegate> {
     
@@ -27,6 +28,7 @@
 	RootViewController* rootViewController ;
 	NSDictionary* charSetNames ;
 	Hasher* hasher ;
+	MasterPasswordStorageHasher* storeMasterHasher ;
 	NSMutableArray* profileList ;
 }
 
@@ -34,6 +36,7 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSDictionary* charSetNames ;
 @property (readonly, nonatomic) NSArray* profileList ;
+@property (readonly, nonatomic) BOOL noMasterPasswordStored ;
 
 - (enum leetType) leetTypeFromSettingString:(NSString*)str ;
 - (NSString*) settingStringFromLeetType:(enum leetType)lt ;
@@ -44,6 +47,8 @@
 - (void) addProfile:(NSString*)str ;
 - (void) remProfile:(NSString*)str ;
 
+
+- (void) createStoreMasterHasher ;
 - (void) setNewMasterPassword:(NSString*)password ;
 - (BOOL) matchesSavedPassword:(NSString*)password ;
 

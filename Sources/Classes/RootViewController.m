@@ -359,7 +359,7 @@ static UIColor *thatTableTextColor ;
 	[self update_password_fields_color];
 }
 - (void) update_password_fields_color { 
-	if ( ! hasher.savedPasswordHash || [hasher.savedPasswordHash length] == 0 ) {
+	if ( [UIApplication getAppDelegate].noMasterPasswordStored ) {
 		masterPassword.textColor = [UIColor blackColor] ;
 	}
 	else if ( ! masterPasswordHashMatches ) {

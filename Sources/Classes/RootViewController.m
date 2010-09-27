@@ -270,9 +270,9 @@ static UIColor *thatTableTextColor ;
 							  andValueText:[self getCharacterSelDesc] 
 								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
 		}
-		case 10: v = prefix ; str = @"Prefix" ; break ;
+		case 8: v = prefix ; str = @"Prefix" ; break ;
 		case 9: v = suffix ; str = @"Suffix" ; break ;
-		case 8: {
+		case 10: {
 			NSString* pn = hasher.profileName ;
 			if ( [pn isEqualToString:@""] ) pn = @"Default" ;
 			return [self makeForTableView:tableView CellWithLabel:@"Profile" 
@@ -334,9 +334,7 @@ static UIColor *thatTableTextColor ;
 
 - (void) tableView:(UITableView *) aTableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath
 {
-	NSLog(@"A Cell clicked");
 	if( indexPath.row == 12 && indexPath.section == 0 ) {
-		NSLog(@"And it was the copy button");
 		// remove the row highlight
 		[aTableView deselectRowAtIndexPath:indexPath animated:YES];
 		[self copyPasswordClicked];

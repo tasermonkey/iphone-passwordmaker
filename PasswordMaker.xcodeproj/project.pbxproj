@@ -34,6 +34,7 @@
 		D74E13A211096DC600635A40 /* iphone_store_desc in Resources */ = {isa = PBXBuildFile; fileRef = D74E13A111096DC600635A40 /* iphone_store_desc */; };
 		D7785BD011491DA3000F9800 /* HmacTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7785BCB11491C6A000F9800 /* HmacTest.m */; };
 		D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D77E3ADD110C098100E533BB /* ProfileSelectionController.m */; };
+		D77FE10712515B9400C1B718 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D77FE10612515B9400C1B718 /* iPadMainWindow.xib */; };
 		D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = D784D61B1139875F00FD2913 /* AlertPrompt.m */; };
 		D78778661102F34D00EEA918 /* HashMD5Test.m in Sources */ = {isa = PBXBuildFile; fileRef = D78778641102F32000EEA918 /* HashMD5Test.m */; };
 		D78778C01102F80300EEA918 /* Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = D718D58511027F52003B7FFC /* Hasher.m */; };
@@ -87,6 +88,7 @@
 		D7785BCB11491C6A000F9800 /* HmacTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmacTest.m; sourceTree = "<group>"; };
 		D77E3ADC110C098100E533BB /* ProfileSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionController.h; sourceTree = "<group>"; };
 		D77E3ADD110C098100E533BB /* ProfileSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSelectionController.m; sourceTree = "<group>"; };
+		D77FE10612515B9400C1B718 /* iPadMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainWindow.xib; sourceTree = "<group>"; };
 		D784D61A1139875F00FD2913 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
 		D784D61B1139875F00FD2913 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
 		D78778571102F2CF00EEA918 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 				D701F9DE1239A717003AD3F5 /* Icon.png */,
 				D701F9DF1239A717003AD3F5 /* iTunesArtwork.png */,
 				D701F9E01239A717003AD3F5 /* Icon-72.png */,
+				D77FE10612515B9400C1B718 /* iPadMainWindow.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PasswordMaker-Info.plist */,
 				D7734FE81102EACA00A2872B /* Unit Test-Info.plist */,
@@ -250,6 +253,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				D72B664112486A9600E76110 /* Rez */,
 			);
 			buildRules = (
 			);
@@ -285,6 +289,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PasswordMaker" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -318,6 +323,7 @@
 				D701F9E51239A717003AD3F5 /* Icon.png in Resources */,
 				D701F9E61239A717003AD3F5 /* iTunesArtwork.png in Resources */,
 				D701F9E71239A717003AD3F5 /* Icon-72.png in Resources */,
+				D77FE10712515B9400C1B718 /* iPadMainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +335,16 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		D72B664112486A9600E76110 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		D78778551102F2CF00EEA918 /* ShellScript */ = {
@@ -417,11 +433,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DEBUGGING_SYMBOLS = used;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos4.1;
+				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -437,7 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -453,7 +475,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv6 armv7";
@@ -574,7 +596,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -93,10 +93,6 @@ static UIColor *thatTableTextColor ;
 	prefix = [self allocTextField:hasher.prefix] ;
 	suffix = [self allocTextField:hasher.suffix] ;
 	generatedPassword = [self allocTextView:@"" readonly:YES ] ;
-	copyPassword = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain] ;
-	copyPassword.frame = buttonFrame ;
-	[copyPassword setTitle:@"Copy Password" forState:UIControlStateNormal];
-	[copyPassword addTarget:self action:@selector(copyPasswordClicked) forControlEvents:UIControlEventTouchUpInside] ;
 	[self updateGeneratePassword];
 	
 }
@@ -145,6 +141,7 @@ static UIColor *thatTableTextColor ;
 	ret.text = txt ;
 	ret.editable = ! readonly ;
 	ret.scrollEnabled = NO ;
+	ret.textColor = thatTableTextColor ;
 	return ret ;
 }
 
@@ -186,8 +183,6 @@ static UIColor *thatTableTextColor ;
 	[prefix release] ;
 	[suffix release] ;
 	[generatedPassword release] ;
-	[copyPassword release] ;
-	
 }
 
 - (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str 
@@ -275,9 +270,9 @@ static UIColor *thatTableTextColor ;
 							  andValueText:[self getCharacterSelDesc] 
 								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
 		}
-		case 8: v = prefix ; str = @"Prefix" ; break ;
+		case 10: v = prefix ; str = @"Prefix" ; break ;
 		case 9: v = suffix ; str = @"Suffix" ; break ;
-		case 10: {
+		case 8: {
 			NSString* pn = hasher.profileName ;
 			if ( [pn isEqualToString:@""] ) pn = @"Default" ;
 			return [self makeForTableView:tableView CellWithLabel:@"Profile" 
@@ -286,14 +281,25 @@ static UIColor *thatTableTextColor ;
 		}
 		case 11: v = generatedPassword ; str = @"Generated Pass" ; 
 			[self update_password_fields_color];  break ;
-		case 12: {
-			UITableViewCell* tvc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cppwd"] ;
-			[tvc.contentView addSubview:copyPassword] ;
-			return [tvc autorelease] ;
+		case 12 : {
+			static NSString *CellIdentifier = @"cpwbtn";
+			UITableViewCell *tvc = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (tvc == nil) { 
+				tvc = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+											  reuseIdentifier:CellIdentifier] autorelease];
+				tvc.textLabel.text = @"Copy password";
+				tvc.textLabel.textAlignment = UITextAlignmentCenter;				
+		    }			
+			return tvc ;
 		}
 		default: return nil ;
 	}
 	return [self makeForTableView:tableView CellWithLabel:str andContentView:v] ;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation ==  UIInterfaceOrientationPortrait);
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -323,6 +329,17 @@ static UIColor *thatTableTextColor ;
 			[profSel release] ;
 			break ;
 		}
+	}
+}
+
+- (void) tableView:(UITableView *) aTableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath
+{
+	NSLog(@"A Cell clicked");
+	if( indexPath.row == 12 && indexPath.section == 0 ) {
+		NSLog(@"And it was the copy button");
+		// remove the row highlight
+		[aTableView deselectRowAtIndexPath:indexPath animated:YES];
+		[self copyPasswordClicked];
 	}
 }
 

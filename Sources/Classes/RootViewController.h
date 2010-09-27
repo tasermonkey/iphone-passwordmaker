@@ -30,7 +30,6 @@
 	UITextField* prefix ;
 	UITextField* suffix ;
 	UITextView* generatedPassword ;
-	UIButton* copyPassword ;
 	Hasher* hasher ;
 	BOOL masterPasswordHashMatches ;
 }
@@ -53,7 +52,7 @@
 - (IBAction) updateGeneratePassword ;
 + (NSString*) LeetEnumToString:(enum leetType)lt WithLevel:(NSInteger)level;
 
-- (IBAction) copyPasswordClicked ;
+- (IBAction) copyPasswordClicked;
 
 - (IBAction) updateFieldsFromHasher ;
 

@@ -84,7 +84,6 @@
 -(NSString*) generatePassword:(NSString*)key withData:(NSString*)text {
 	if ( isHmac == NO ) {
 		key = [key stringByAppendingString:text] ;
-		text = @"" ;
 		return [self hashText:key WithAlgo:algo AndCharacterSet:characters] ;
 	} else {
 		return [self hMacHashKey:key Text:text WithAlgo:algo AndCharacterSet:characters] ; 

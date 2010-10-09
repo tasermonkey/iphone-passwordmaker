@@ -33,6 +33,8 @@ static UIColor *thatTableTextColor ;
 
 //#define PASSWORDTIMEOUT 10
 
+#define FIELDORDER { masterPassword, inputURL, passLength, username, modifier, prefix, suffix, nil }
+
 @implementation RootViewController
 + (NSString*) LeetEnumToString:(enum leetType)lt WithLevel:(NSInteger)level {
 	if ( level < 1 || level > 9 ) {
@@ -93,6 +95,7 @@ static UIColor *thatTableTextColor ;
 	prefix = [self allocTextField:hasher.prefix] ;
 	suffix = [self allocTextField:hasher.suffix] ;
 	generatedPassword = [self allocTextView:@"" readonly:YES ] ;
+	[self set_proper_keyboard];
 	[self updateGeneratePassword];
 	
 }
@@ -149,13 +152,26 @@ static UIColor *thatTableTextColor ;
 	[self updateGeneratePassword];
 }
 
+- (void) set_proper_keyboard {
+	UITextField* fieldOrder[] = FIELDORDER;
+	for (UITextField** itr = fieldOrder; *itr!=nil; ++itr) 
+		itr->returnKeyType = ( *(itr+1) != nil ? 
+							  UIReturnKeyNext : UIReturnKeyDone );
+
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
 	return YES ;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[textField resignFirstResponder] ;
-	return NO ;
+	UITextField* fieldOrder[] = FIELDORDER;
+	UITextField** nextField = fieldOrder;
+	while ( *nextField != nil && *nextField != textField ) nextField++;
+	if ( nextField != nil ) nextField++;
+	[textField resignFirstResponder];
+	[*nextField becomeFirstResponder];
+	return YES ;
 }
 
 - (void)didReceiveMemoryWarning {

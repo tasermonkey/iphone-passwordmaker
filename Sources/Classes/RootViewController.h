@@ -58,4 +58,6 @@
 
 - (void) update_password_fields_color ;
 
+- (void) set_proper_keyboard;
+
 @end

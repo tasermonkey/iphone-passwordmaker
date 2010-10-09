@@ -174,6 +174,15 @@ static UIColor *thatTableTextColor ;
 	return YES ;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+replacementString:(NSString *)string {
+	if ([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] &&
+        [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+		[self updateGeneratePassword];
+	}
+	return YES;
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

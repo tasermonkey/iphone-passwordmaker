@@ -23,6 +23,7 @@
 #import "CharacterSetSelectionController.h"
 #import "LeetSelectionController.h"
 #import "ProfileSelectionController.h"
+#import "InputFavorites.h"
 
 static CGRect valueFrame ;
 static CGRect textViewFrame ;
@@ -95,6 +96,9 @@ static UIColor *thatTableTextColor ;
 	prefix = [self allocTextField:hasher.prefix] ;
 	suffix = [self allocTextField:hasher.suffix] ;
 	generatedPassword = [self allocTextView:@"" readonly:YES ] ;
+	favorites = [[[[NSUserDefaults standardUserDefaults] 
+				  arrayForKey:@"favorites"] mutableCopy] retain];
+	if ( favorites == nil ) favorites = [[NSMutableArray alloc] init];
 	[self set_proper_keyboard];
 	[self updateGeneratePassword];
 	
@@ -190,11 +194,13 @@ replacementString:(NSString *)string {
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void) applicationWillTerminate:(UIApplication *)application {
+- (void) shouldSaveSettings:(UIApplication *)application {
+	NSLog(@"Writing out to defaults");
 	[[NSUserDefaults standardUserDefaults] setObject:masterPassword.text forKey:@"masterPass"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:inputURL.text forKey:@"inputUrl"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastAccess"] ;
+	[[NSUserDefaults standardUserDefaults] setObject:(NSArray*)favorites forKey:@"favorites"] ;
 }
 
 - (void)viewDidUnload {
@@ -245,6 +251,23 @@ replacementString:(NSString *)string {
     return cell;	
 }
 
+- (UITableViewCell*) makeInputUrlForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
+						 WithTextField:(UITextField*)fieldValue accessType:(UITableViewCellAccessoryType)acc {
+	static NSString *CellIdentifier = @"InputURLReuse";
+	UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+									   reuseIdentifier:CellIdentifier] autorelease];
+    }
+	// Set up the cell...
+	cell.textLabel.text = str ;
+	[cell.contentView addSubview:fieldValue ];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
+	cell.accessoryType = acc ;
+    return cell;
+	
+}
+
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -273,10 +296,14 @@ replacementString:(NSString *)string {
 		case 0: {
 			[self update_password_fields_color] ;
 			v = masterPassword ; 
-			str = @"Master Pass" ; 
+			str = @"Master Pass" ;
 			break ;
 		}
-		case 1: v = inputURL ; str = @"Input URL" ; break ;
+		case 1: { 
+			//v = inputURL ; str = @"Input URL" ; break ;
+			return [self makeInputUrlForTableView:tableView CellWithLabel:@"Input URL"
+							 WithTextField:inputURL accessType:UITableViewCellAccessoryDetailDisclosureButton];
+		}
 		case 2: {
 			return [self makeForTableView:tableView CellWithLabel:@"Leet" 
 							  andValueText:[RootViewController LeetEnumToString:hasher.leetSpeak WithLevel:hasher.leetLevel] 
@@ -329,6 +356,12 @@ replacementString:(NSString *)string {
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.row) {
+		case 1: {
+			InputFavorites* inputFavs = [[InputFavorites alloc] initWithTextField:inputURL andFavorites:favorites];
+			[self.navigationController pushViewController:inputFavs animated:YES] ;
+			[inputFavs release] ;
+			break;
+		}
 		case 2: {
 			LeetSelectionController* leetSel = [[LeetSelectionController alloc] initWithHasher:hasher] ;
 			[self.navigationController pushViewController:leetSel animated:YES] ;
@@ -376,6 +409,7 @@ replacementString:(NSString *)string {
 }
 
 - (void)dealloc {
+	[favorites release];
 	[hasher release] ;
     [super dealloc];
 }

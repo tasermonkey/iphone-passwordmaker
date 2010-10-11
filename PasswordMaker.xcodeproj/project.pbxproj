@@ -32,6 +32,7 @@
 		D74E1325110960F500635A40 /* ripemd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E12541109524E00635A40 /* ripemd.cpp */; };
 		D74E13281109610D00635A40 /* HMacer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D74E11211109354600635A40 /* HMacer.cpp */; };
 		D74E13A211096DC600635A40 /* iphone_store_desc in Resources */ = {isa = PBXBuildFile; fileRef = D74E13A111096DC600635A40 /* iphone_store_desc */; };
+		D77569091262420900B46C4E /* InputFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = D77569081262420900B46C4E /* InputFavorites.m */; };
 		D7785BD011491DA3000F9800 /* HmacTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7785BCB11491C6A000F9800 /* HmacTest.m */; };
 		D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D77E3ADD110C098100E533BB /* ProfileSelectionController.m */; };
 		D77FE10712515B9400C1B718 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D77FE10612515B9400C1B718 /* iPadMainWindow.xib */; };
@@ -84,6 +85,8 @@
 		D74E130411095E5D00635A40 /* RipemdHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RipemdHashTest.m; sourceTree = "<group>"; };
 		D74E13A111096DC600635A40 /* iphone_store_desc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iphone_store_desc; sourceTree = "<group>"; };
 		D7734FE81102EACA00A2872B /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit Test-Info.plist"; path = "../Unit Test-Info.plist"; sourceTree = "<group>"; };
+		D77569071262420900B46C4E /* InputFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputFavorites.h; sourceTree = "<group>"; };
+		D77569081262420900B46C4E /* InputFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputFavorites.m; sourceTree = "<group>"; };
 		D7785BCA11491C6A000F9800 /* HmacTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmacTest.h; sourceTree = "<group>"; };
 		D7785BCB11491C6A000F9800 /* HmacTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmacTest.m; sourceTree = "<group>"; };
 		D77E3ADC110C098100E533BB /* ProfileSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionController.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				D77E3ADD110C098100E533BB /* ProfileSelectionController.m */,
 				D784D61A1139875F00FD2913 /* AlertPrompt.h */,
 				D784D61B1139875F00FD2913 /* AlertPrompt.m */,
+				D77569071262420900B46C4E /* InputFavorites.h */,
+				D77569081262420900B46C4E /* InputFavorites.m */,
 			);
 			name = Classes;
 			path = Sources/Classes;
@@ -381,6 +386,7 @@
 				D77E3ADE110C098100E533BB /* ProfileSelectionController.m in Sources */,
 				D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */,
 				D7B6B87311CAF5230039A24D /* MasterPasswordStorageHasher.m in Sources */,
+				D77569091262420900B46C4E /* InputFavorites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

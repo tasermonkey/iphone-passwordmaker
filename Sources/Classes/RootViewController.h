@@ -32,6 +32,7 @@
 	UITextView* generatedPassword ;
 	Hasher* hasher ;
 	BOOL masterPasswordHashMatches ;
+	NSMutableArray* favorites;
 }
 - (id) initWithHasher:(Hasher*)hashObj ;
 
@@ -47,7 +48,7 @@
 - (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
 						andValueText:(NSString*)valueText accessType:(UITableViewCellAccessoryType)acc ;
 
-- (void) applicationWillTerminate:(UIApplication *)application ;
+- (void) shouldSaveSettings:(UIApplication *)application ;
 
 - (IBAction) updateGeneratePassword ;
 + (NSString*) LeetEnumToString:(enum leetType)lt WithLevel:(NSInteger)level;

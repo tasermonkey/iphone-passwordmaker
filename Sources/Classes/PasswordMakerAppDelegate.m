@@ -62,11 +62,18 @@
     [window makeKeyAndVisible] ;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	[self saveHasherProfile] ;
+	[[NSUserDefaults standardUserDefaults] setObject:profileList forKey:@"profiles"] ;
+	[[NSUserDefaults standardUserDefaults] setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
+	[rootViewController shouldSaveSettings:application] ;
+}
+
 - (void)applicationWillTerminate:(UIApplication *)application {
 	[self saveHasherProfile] ;
 	[[NSUserDefaults standardUserDefaults] setObject:profileList forKey:@"profiles"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
-	[rootViewController applicationWillTerminate:application] ;
+	[rootViewController shouldSaveSettings:application] ;
 	[rootViewController.view removeFromSuperview] ;
 	[rootViewController release] ;
 	[charSetNames release] ;

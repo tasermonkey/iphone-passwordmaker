@@ -27,6 +27,7 @@
 
 static CGRect valueFrame ;
 static CGRect textViewFrame ;
+static CGRect textViewFrameNotAsWide ;
 static CGRect buttonFrame ;
 static UIColor *thatTableTextColor ;
 
@@ -57,6 +58,7 @@ static UIColor *thatTableTextColor ;
 + (void) initialize {
 	valueFrame = CGRectMake(150, 10, 145, 38) ;
 	textViewFrame = CGRectMake(150, 10, 145, 30) ;
+	textViewFrameNotAsWide = CGRectMake(150, 10, 119, 30) ;
 	buttonFrame = CGRectMake(5, 5, 290, 33) ;
 	thatTableTextColor = [[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] retain];
 
@@ -133,6 +135,8 @@ static UIColor *thatTableTextColor ;
 - (UITextField*) allocTextField:(NSString*)txt keyboardType:(UIKeyboardType)kbt {
 	UITextField* ret = [self allocTextField:txt] ;
 	ret.keyboardType = kbt ;
+	ret.frame = textViewFrameNotAsWide;
+	ret.clearButtonMode = UITextFieldViewModeAlways;
 	return ret ;
 }
 

@@ -27,7 +27,6 @@
 
 static CGRect valueFrame ;
 static CGRect textViewFrame ;
-static CGRect textViewFrameNotAsWide ;
 static CGRect buttonFrame ;
 static UIColor *thatTableTextColor ;
 
@@ -55,10 +54,10 @@ static UIColor *thatTableTextColor ;
 	};
 }
 
+
 + (void) initialize {
 	valueFrame = CGRectMake(150, 10, 145, 38) ;
 	textViewFrame = CGRectMake(150, 10, 145, 30) ;
-	textViewFrameNotAsWide = CGRectMake(150, 10, 119, 30) ;
 	buttonFrame = CGRectMake(5, 5, 290, 33) ;
 	thatTableTextColor = [[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] retain];
 
@@ -122,7 +121,10 @@ static UIColor *thatTableTextColor ;
 
 - (UITextField*) allocTextField:(NSString*)txt {
 	UITextField* ret = [[UITextField alloc] initWithFrame:valueFrame] ;
+	ret.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	ret.autoresizesSubviews = YES;
 	ret.text = txt ;
+	ret.textAlignment = UITextAlignmentRight;
 	ret.delegate = self ;
 	ret.autocapitalizationType = UITextAutocapitalizationTypeNone ;
 	ret.autocorrectionType = UITextAutocorrectionTypeNo ;
@@ -134,25 +136,34 @@ static UIColor *thatTableTextColor ;
 
 - (UITextField*) allocTextField:(NSString*)txt keyboardType:(UIKeyboardType)kbt {
 	UITextField* ret = [self allocTextField:txt] ;
+	ret.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	ret.autoresizesSubviews = YES;
 	ret.keyboardType = kbt ;
-	ret.frame = textViewFrameNotAsWide;
 	ret.clearButtonMode = UITextFieldViewModeAlways;
+	ret.textAlignment = UITextAlignmentRight;
 	return ret ;
 }
 
 
 - (UITextField*) allocTextField:(NSString*)txt isPassword:(BOOL)isPass {
 	UITextField* ret = [self allocTextField:txt] ;
+	ret.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	ret.autoresizesSubviews = YES;
 	ret.secureTextEntry = isPass ;
+	ret.textAlignment = UITextAlignmentRight;
 	return ret ;
 }
 
 - (UITextView*) allocTextView:(NSString*)txt readonly:(BOOL)readonly {
 	UITextView* ret = [[UITextView alloc] initWithFrame:textViewFrame ] ;
+	ret.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	ret.autoresizesSubviews = YES;
 	ret.text = txt ;
 	ret.editable = ! readonly ;
 	ret.scrollEnabled = NO ;
 	ret.textColor = thatTableTextColor ;
+	ret.backgroundColor = [UIColor clearColor] ;
+	ret.textAlignment = UITextAlignmentRight;
 	return ret ;
 }
 
@@ -222,16 +233,13 @@ replacementString:(NSString *)string {
 
 - (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str 
 					   andContentView:(UIView*)cview  {
-	
-    static NSString *CellIdentifier = nil;
-    
-    UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
+
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+													reuseIdentifier:nil] autorelease];
     // Set up the cell...
 	cell.textLabel.text = str ;
+	cell.contentView.autoresizesSubviews = YES;
+	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[cell.contentView addSubview:cview ];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell;
@@ -239,17 +247,14 @@ replacementString:(NSString *)string {
 
 - (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
 						  andValueText:(NSString*)valueText accessType:(UITableViewCellAccessoryType)acc {
-	
-    static NSString *CellIdentifier = @"TextValueCellReuse";
-    
-    UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-    }
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+													reuseIdentifier:nil] autorelease];
+
     
     // Set up the cell...
 	cell.textLabel.text = str ;
 	cell.detailTextLabel.text = valueText ;
+	cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
 	cell.accessoryType = acc ;
     return cell;	
@@ -257,14 +262,12 @@ replacementString:(NSString *)string {
 
 - (UITableViewCell*) makeInputUrlForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
 						 WithTextField:(UITextField*)fieldValue accessType:(UITableViewCellAccessoryType)acc {
-	static NSString *CellIdentifier = @"InputURLReuse";
-	UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-									   reuseIdentifier:CellIdentifier] autorelease];
-    }
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+													reuseIdentifier:nil] autorelease];
 	// Set up the cell...
 	cell.textLabel.text = str ;
+	cell.contentView.autoresizesSubviews = YES;
+	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;	
 	[cell.contentView addSubview:fieldValue ];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
 	cell.accessoryType = acc ;

@@ -56,6 +56,8 @@
 	self.navigationItem.title = @"Input Favorites" ;	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	if ( favorite.count == 0 )
+		self.editing = YES;
 	
 	
 }
@@ -174,6 +176,7 @@
 												   okButtonTitle:@"Insert"] autorelease];
 		prompt.textField.autocorrectionType = UITextAutocorrectionTypeNo;
 		prompt.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+		prompt.textField.keyboardType = UIKeyboardTypeURL;
 		[prompt show];
     } 
 }

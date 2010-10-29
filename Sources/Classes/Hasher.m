@@ -74,7 +74,8 @@
 	} else if ( [algoStr isEqualToString:@"RIPEMD-160"] ) {
 		algo = HASHTYPE_RIPEMD160 ;
 	} else if ( [algoStr isEqualToString:@"HMAC-RIPEMD-160"] ) {
-		algo = HASHTYPE_HMAC_RIPEMD160 ;		
+		algo = HASHTYPE_HMAC_RIPEMD160 ;	
+		isHmac = YES;
 	} else {
 		return ;
 	}

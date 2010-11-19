@@ -56,7 +56,7 @@ static UIColor *thatTableTextColor ;
 
 
 + (void) initialize {
-	valueFrame = CGRectMake(150, 10, 145, 38) ;
+	valueFrame = CGRectMake(150, 10, 150, 38) ;
 	textViewFrame = CGRectMake(150, 10, 145, 30) ;
 	buttonFrame = CGRectMake(5, 5, 290, 33) ;
 	thatTableTextColor = [[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] retain];
@@ -100,9 +100,17 @@ static UIColor *thatTableTextColor ;
 	favorites = [[[[NSUserDefaults standardUserDefaults] 
 				  arrayForKey:@"favorites"] mutableCopy] retain];
 	if ( favorites == nil ) favorites = [[NSMutableArray alloc] init];
+	[self initCells];
 	[self set_proper_keyboard];
 	[self updateGeneratePassword];
 	
+}
+
+- (void) initCells {
+	tableCells = [[NSMutableArray alloc] init]	;
+	for ( int i = 0; i <= 12; ++i ) {
+		[tableCells addObject:[self cellForRow:i]];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,7 +147,7 @@ static UIColor *thatTableTextColor ;
 	ret.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	ret.autoresizesSubviews = YES;
 	ret.keyboardType = kbt ;
-	ret.clearButtonMode = UITextFieldViewModeAlways;
+	ret.clearButtonMode = UITextFieldViewModeWhileEditing;
 	ret.textAlignment = UITextAlignmentRight;
 	return ret ;
 }
@@ -210,7 +218,6 @@ replacementString:(NSString *)string {
 }
 
 - (void) shouldSaveSettings:(UIApplication *)application {
-	NSLog(@"Writing out to defaults");
 	[[NSUserDefaults standardUserDefaults] setObject:masterPassword.text forKey:@"masterPass"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:inputURL.text forKey:@"inputUrl"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"] ;
@@ -221,6 +228,7 @@ replacementString:(NSString *)string {
 - (void)viewDidUnload {
 	// Release anything that can be recreated in viewDidLoad or on demand.
 	// e.g. self.myOutlet = nil;
+	[tableCells release];
 	[masterPassword release] ;
 	[inputURL release] ;
 	[passLength release] ;
@@ -231,7 +239,9 @@ replacementString:(NSString *)string {
 	[generatedPassword release] ;
 }
 
-- (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str 
+#pragma mark TableViewCell Creation
+
+- (UITableViewCell*) makeCellWithLabel:(NSString*)str 
 					   andContentView:(UIView*)cview  {
 
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
@@ -240,40 +250,121 @@ replacementString:(NSString *)string {
 	cell.textLabel.text = str ;
 	cell.contentView.autoresizesSubviews = YES;
 	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	cview.frame = valueFrame;
+	cview.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	cview.autoresizesSubviews = YES;	
 	[cell.contentView addSubview:cview ];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell;
 }
 
-- (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
-						  andValueText:(NSString*)valueText accessType:(UITableViewCellAccessoryType)acc {
+- (UITableViewCell*) makeCellWithLabel:(NSString*)str
+							accessType:(UITableViewCellAccessoryType)acc {
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 													reuseIdentifier:nil] autorelease];
 
     
     // Set up the cell...
 	cell.textLabel.text = str ;
-	cell.detailTextLabel.text = valueText ;
+	cell.detailTextLabel.text = @"" ;
 	cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
 	cell.accessoryType = acc ;
     return cell;	
 }
 
-- (UITableViewCell*) makeInputUrlForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
+- (UITableViewCell*) makeInputUrlCellWithLabel:(NSString*)str
 						 WithTextField:(UITextField*)fieldValue accessType:(UITableViewCellAccessoryType)acc {
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
 													reuseIdentifier:nil] autorelease];
 	// Set up the cell...
 	cell.textLabel.text = str ;
 	cell.contentView.autoresizesSubviews = YES;
-	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;	
+	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	fieldValue.frame = valueFrame;
+	fieldValue.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	fieldValue.autoresizesSubviews = YES;
 	[cell.contentView addSubview:fieldValue ];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
 	cell.accessoryType = acc ;
     return cell;
-	
 }
+
+
+- (UITableViewCell*) cellForRow:(int)row {
+	UIView* v = nil ;
+	NSString* str = @"" ;
+    switch (row) {
+		case 0: {
+			[self update_password_fields_color] ;
+			v = masterPassword ; 
+			str = @"Master Pass" ;
+			break ;
+		}
+		case 1: { 
+			//v = inputURL ; str = @"Input URL" ; break ;
+			return [self makeInputUrlCellWithLabel:@"Input URL"
+									 WithTextField:inputURL accessType:UITableViewCellAccessoryDetailDisclosureButton];
+		}
+		case 2: {
+			return [self makeCellWithLabel:@"Leet" 
+								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
+		}
+		case 3: {
+			return [self makeCellWithLabel:@"Hash Algo" 
+								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
+		}
+		case 4: v = passLength ; str = @"Pass Length" ; break ;
+		case 5: v = username ; str = @"Username" ; break ;
+		case 6: v = modifier ; str = @"Modifier" ; break ;
+		case 7: {
+			return [self makeCellWithLabel:@"Characters" 
+								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
+		}
+		case 8: v = prefix ; str = @"Prefix" ; break ;
+		case 9: v = suffix ; str = @"Suffix" ; break ;
+		case 10: {
+			return [self makeCellWithLabel:@"Profile" 
+								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
+		}
+		case 11: v = generatedPassword ; str = @"Generated Pass" ; 
+			[self update_password_fields_color];  break ;
+		case 12 : {
+				UITableViewCell* tvc = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+											  reuseIdentifier:nil] autorelease];
+				tvc.textLabel.text = @"Copy password";
+				tvc.textLabel.textAlignment = UITextAlignmentCenter;				
+			return tvc ;
+		}
+		default: return nil ;
+	}
+	return [self makeCellWithLabel:str andContentView:v] ;	
+}
+
+- (void) updateCellAtRow:(int)row {
+	UITableViewCell* cell = (UITableViewCell*)[tableCells objectAtIndex:row];
+	switch (row) {
+		case 2:{
+			cell.detailTextLabel.text = [RootViewController LeetEnumToString:hasher.leetSpeak WithLevel:hasher.leetLevel] ;	
+			break;
+		}
+		case 3:{
+			cell.detailTextLabel.text = hasher.hashAlgo;
+			break;
+		}
+		case 7:{
+			cell.detailTextLabel.text = [self getCharacterSelDesc] ;
+			break;
+		}
+		case 10: {
+			NSString* pn = hasher.profileName ;
+			if ( [pn isEqualToString:@""] ) pn = @"Default" ;
+			cell.detailTextLabel.text = pn ;
+			break;
+		}
+	}
+}
+
 
 #pragma mark Table view methods
 
@@ -294,66 +385,10 @@ replacementString:(NSString *)string {
 	return name ;
 }
 
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UIView* v = nil ;
-	NSString* str = @"" ;
-    switch (indexPath.row) {
-		case 0: {
-			[self update_password_fields_color] ;
-			v = masterPassword ; 
-			str = @"Master Pass" ;
-			break ;
-		}
-		case 1: { 
-			//v = inputURL ; str = @"Input URL" ; break ;
-			return [self makeInputUrlForTableView:tableView CellWithLabel:@"Input URL"
-							 WithTextField:inputURL accessType:UITableViewCellAccessoryDetailDisclosureButton];
-		}
-		case 2: {
-			return [self makeForTableView:tableView CellWithLabel:@"Leet" 
-							  andValueText:[RootViewController LeetEnumToString:hasher.leetSpeak WithLevel:hasher.leetLevel] 
-								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
-		}
-		case 3: {
-			return [self makeForTableView:tableView CellWithLabel:@"Hash Algo" 
-							  andValueText:hasher.hashAlgo 
-								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
-		}
-		case 4: v = passLength ; str = @"Pass Length" ; break ;
-		case 5: v = username ; str = @"Username" ; break ;
-		case 6: v = modifier ; str = @"Modifier" ; break ;
-		case 7: {
-			return [self makeForTableView:tableView CellWithLabel:@"Characters" 
-							  andValueText:[self getCharacterSelDesc] 
-								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
-		}
-		case 8: v = prefix ; str = @"Prefix" ; break ;
-		case 9: v = suffix ; str = @"Suffix" ; break ;
-		case 10: {
-			NSString* pn = hasher.profileName ;
-			if ( [pn isEqualToString:@""] ) pn = @"Default" ;
-			return [self makeForTableView:tableView CellWithLabel:@"Profile" 
-							  andValueText:pn
-								accessType:UITableViewCellAccessoryDetailDisclosureButton] ;
-		}
-		case 11: v = generatedPassword ; str = @"Generated Pass" ; 
-			[self update_password_fields_color];  break ;
-		case 12 : {
-			static NSString *CellIdentifier = @"cpwbtn";
-			UITableViewCell *tvc = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			if (tvc == nil) { 
-				tvc = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-											  reuseIdentifier:CellIdentifier] autorelease];
-				tvc.textLabel.text = @"Copy password";
-				tvc.textLabel.textAlignment = UITextAlignmentCenter;				
-		    }			
-			return tvc ;
-		}
-		default: return nil ;
-	}
-	return [self makeForTableView:tableView CellWithLabel:str andContentView:v] ;
+	[self updateCellAtRow:indexPath.row];
+	return [tableCells objectAtIndex:indexPath.row];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 

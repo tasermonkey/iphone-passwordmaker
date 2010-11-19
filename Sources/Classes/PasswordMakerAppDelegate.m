@@ -33,7 +33,6 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	
 	NSDictionary* defaults = [NSDictionary dictionaryWithContentsOfFile:
 				 [[NSBundle mainBundle] 
 				  pathForResource:@"Defaults" ofType:@"plist"]] ;

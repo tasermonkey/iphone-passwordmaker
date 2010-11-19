@@ -193,7 +193,7 @@
 	} else if ( algo == HASHTYPE_HMAC_RIPEMD160 ) {		
 		unsigned char result[RIPEMD160_DIGESTSIZE];
 		hmac_ripemd160( cStrTxt, cStrTxtLen, cStr, cStrLen, result ) ;
-		return [Hasher rstr2any:result charSet:charSet length:RIPEMD160_DIGESTSIZE] ;	
+ 		return [Hasher rstr2any:result charSet:charSet length:RIPEMD160_DIGESTSIZE] ;	
 	} else {
 		return @"" ;
 	}

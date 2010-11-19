@@ -30,6 +30,7 @@
 	UITextField* prefix ;
 	UITextField* suffix ;
 	UITextView* generatedPassword ;
+	NSMutableArray* tableCells;
 	Hasher* hasher ;
 	BOOL masterPasswordHashMatches ;
 	NSMutableArray* favorites;
@@ -42,16 +43,25 @@
 - (UITextField*) allocTextField:(NSString*)txt keyboardType:(UIKeyboardType)kbt ;
 - (UITextView*) allocTextView:(NSString*)txt readonly:(BOOL)readonly ;
 
-- (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
+- (UITableViewCell*) makeCellWithLabel:(NSString*)str
 						andContentView:(UIView*)cview ;
 
-- (UITableViewCell*) makeForTableView:(UITableView*)tblView CellWithLabel:(NSString*)str
-						andValueText:(NSString*)valueText accessType:(UITableViewCellAccessoryType)acc ;
+- (UITableViewCell*) makeCellWithLabel:(NSString*)str
+							accessType:(UITableViewCellAccessoryType)acc ;
+
+- (UITableViewCell*) makeInputUrlCellWithLabel:(NSString*)str
+								WithTextField:(UITextField*)fieldValue accessType:(UITableViewCellAccessoryType)acc ;
+
+- (UITableViewCell*) cellForRow:(int)row ;
+
+- (NSString*) getCharacterSelDesc ;
 
 - (void) shouldSaveSettings:(UIApplication *)application ;
 
 - (IBAction) updateGeneratePassword ;
 + (NSString*) LeetEnumToString:(enum leetType)lt WithLevel:(NSInteger)level;
+
+- (void) initCells;
 
 - (IBAction) copyPasswordClicked;
 

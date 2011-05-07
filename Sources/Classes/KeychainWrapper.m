@@ -1,4 +1,20 @@
 /*
+ * Copyright (C) 2011 Conrad Shultz
+ *
+ * This file is part of Iphone PasswordMaker.
+ *
+ * Iphone PasswordMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Iphone PasswordMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Iphone PasswordMaker.  If not, see <http://www.gnu.org/licenses/>.
+ *
  * Derived heavily from:
  **
  File: KeychainItemWrapper.m 
@@ -47,6 +63,9 @@
 
 // Updates the item in the keychain, or adds it if it doesn't exist.
 - (void)writeToKeychain;
+
+// Returns the item ID used to uniquely identify the password record in the keychain
+- (NSData *)keychainItemID;
 
 @end
 

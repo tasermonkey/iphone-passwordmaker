@@ -14,6 +14,8 @@
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		A4B6320D12EFF87000CBC08C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6320C12EFF87000CBC08C /* KeychainWrapper.m */; };
+		A4C33CA313329EC3007048C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C33CA213329EC3007048C6 /* Security.framework */; };
 		D701F9E11239A717003AD3F5 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DA1239A717003AD3F5 /* Icon-Small@2x.png */; };
 		D701F9E21239A717003AD3F5 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DB1239A717003AD3F5 /* Icon-Small-50.png */; };
 		D701F9E31239A717003AD3F5 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DC1239A717003AD3F5 /* Icon-Small.png */; };
@@ -60,6 +62,9 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PasswordMaker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PasswordMaker-Info.plist"; path = "../PasswordMaker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A4B6320B12EFF87000CBC08C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		A4B6320C12EFF87000CBC08C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		A4C33CA213329EC3007048C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D701F9DA1239A717003AD3F5 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D701F9DB1239A717003AD3F5 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		D701F9DC1239A717003AD3F5 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				A4C33CA313329EC3007048C6 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +167,8 @@
 				D784D61B1139875F00FD2913 /* AlertPrompt.m */,
 				D77569071262420900B46C4E /* InputFavorites.h */,
 				D77569081262420900B46C4E /* InputFavorites.m */,
+				A4B6320B12EFF87000CBC08C /* KeychainWrapper.h */,
+				A4B6320C12EFF87000CBC08C /* KeychainWrapper.m */,
 			);
 			name = Classes;
 			path = Sources/Classes;
@@ -226,6 +234,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				A4C33CA213329EC3007048C6 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 				D784D61C1139875F00FD2913 /* AlertPrompt.m in Sources */,
 				D7B6B87311CAF5230039A24D /* MasterPasswordStorageHasher.m in Sources */,
 				D77569091262420900B46C4E /* InputFavorites.m in Sources */,
+				A4B6320D12EFF87000CBC08C /* KeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +458,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

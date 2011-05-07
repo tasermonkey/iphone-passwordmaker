@@ -32,7 +32,7 @@ static UIColor *thatTableTextColor ;
 
 #define PASSWORDTIMEOUT (60. * 5)
 
-//#define PASSWORDTIMEOUT 10
+#define PASSWORDTIMEOUT 10
 
 #define FIELDORDER { masterPassword, inputURL, passLength, username, modifier, prefix, suffix, nil }
 
@@ -71,6 +71,7 @@ static UIColor *thatTableTextColor ;
 }
 
 - (void)viewDidLoad {
+	NSLog(@"viewDidLoad");
 	self.navigationItem.title = @"Password Maker" ;
     [super viewDidLoad];
 	
@@ -78,9 +79,15 @@ static UIColor *thatTableTextColor ;
 	NSString* strmasterPass = nil ;
 	NSString* strinputUrl = nil ;
 	NSString* strusername = nil ;
-	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since its in the past its negative
+	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since it's in the past it's negative
+	NSLog(@"%d seconds since last access", secSinceLastAccess);
+	NSLog(@"%d second timeout", PASSWORDTIMEOUT);
 	if ( lastAccess != nil &&  secSinceLastAccess < PASSWORDTIMEOUT ) {
-		strmasterPass = [[NSUserDefaults standardUserDefaults] objectForKey:@"masterPass"] ;
+		//DELETE
+		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+		strmasterPass = [chainWrapper password];
+		[chainWrapper release];
+		//strmasterPass = [[NSUserDefaults standardUserDefaults] objectForKey:@"masterPass"] ;
 		strinputUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"inputUrl"] ;
 		strusername = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] ;
 	}
@@ -218,7 +225,14 @@ replacementString:(NSString *)string {
 }
 
 - (void) shouldSaveSettings:(UIApplication *)application {
-	[[NSUserDefaults standardUserDefaults] setObject:masterPassword.text forKey:@"masterPass"] ;
+	if (![masterPassword.text isEqualToString:@""]) {
+		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+		NSLog(@"saved password WAS %@", [chainWrapper password]);
+		NSLog(@"Will save password %@", masterPassword.text);
+		[chainWrapper setPassword:masterPassword.text];
+		NSLog(@"saved password is now %@", [chainWrapper password]);
+		[chainWrapper release];
+	}
 	[[NSUserDefaults standardUserDefaults] setObject:inputURL.text forKey:@"inputUrl"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastAccess"] ;

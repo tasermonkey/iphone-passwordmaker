@@ -31,8 +31,19 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	/* Handle transition from unencrypted password storage to Keychain Services. */
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	NSString *oldMasterPassword = [userDefaults objectForKey:@"masterPass"];
+	if (oldMasterPassword != nil) {
+		[userDefaults removeObjectForKey:@"masterPass"];
+		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+		[chainWrapper setPassword:oldMasterPassword];
+		[chainWrapper release];
+	}
+}
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 	NSDictionary* defaults = [NSDictionary dictionaryWithContentsOfFile:
 				 [[NSBundle mainBundle] 
 				  pathForResource:@"Defaults" ofType:@"plist"]] ;
@@ -62,9 +73,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[self saveHasherProfile] ;
-	[[NSUserDefaults standardUserDefaults] setObject:profileList forKey:@"profiles"] ;
-	[[NSUserDefaults standardUserDefaults] setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
+	[userDefaults setObject:profileList forKey:@"profiles"] ;
+	[userDefaults setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
+	NSLog(@"Entering background");
 	[rootViewController shouldSaveSettings:application] ;
 }
 

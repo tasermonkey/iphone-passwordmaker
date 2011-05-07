@@ -423,13 +423,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "F3D6AAA2-F895-4385-8E1B-91974E8C20F3";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -437,11 +441,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "F3D6AAA2-F895-4385-8E1B-91974E8C20F3";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -502,11 +510,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "F3D6AAA2-F895-4385-8E1B-91974E8C20F3";
+				SDKROOT = iphoneos;
 			};
 			name = AppStore;
 		};
@@ -534,7 +546,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphonesimulator3.1.2;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -566,7 +578,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphonesimulator3.1.2;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -595,7 +607,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphonesimulator3.1.2;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -622,11 +634,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
+				PROVISIONING_PROFILE = "F3D6AAA2-F895-4385-8E1B-91974E8C20F3";
+				SDKROOT = iphoneos;
 			};
 			name = "AdHoc Distro";
 		};
@@ -654,7 +670,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphonesimulator3.1.2;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};

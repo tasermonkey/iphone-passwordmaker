@@ -20,6 +20,7 @@
 #import "RootViewController.h"
 #import "Hasher.h"
 #import "MasterPasswordStorageHasher.h"
+#import "KeychainWrapper.h"
 
 @interface PasswordMakerAppDelegate : NSObject <UIApplicationDelegate> {
     

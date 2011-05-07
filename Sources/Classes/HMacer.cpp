@@ -85,7 +85,7 @@ template<> HashTraits< RIPEMD_CTX>::InitFunction HashTraits< RIPEMD_CTX >::Init 
 template<> HashTraits< RIPEMD_CTX>::UpdateFunction HashTraits< RIPEMD_CTX >::Update  = &ripemd_update_apple ;
 template<> HashTraits< RIPEMD_CTX>::FinalFunction HashTraits< RIPEMD_CTX >::Final  = &ripemd_final_apple  ;
 template<> const int HashTraits< RIPEMD_CTX >::digest_size = RIPEMD160_DIGESTSIZE ;
-template<> const int HashTraits< RIPEMD_CTX >::block_size = RIPEMD160_DIGESTSIZE ;
+template<> const int HashTraits< RIPEMD_CTX >::block_size = RIPEMD_DATASIZE ;
 
 
 

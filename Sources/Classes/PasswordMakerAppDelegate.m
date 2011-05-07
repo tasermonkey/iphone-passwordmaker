@@ -77,7 +77,6 @@
 	[self saveHasherProfile] ;
 	[userDefaults setObject:profileList forKey:@"profiles"] ;
 	[userDefaults setObject:storeMasterHasher.savedPasswordHash forKey:@"masterpasshash"] ;
-	NSLog(@"Entering background");
 	[rootViewController shouldSaveSettings:application] ;
 }
 

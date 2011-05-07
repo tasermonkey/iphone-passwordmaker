@@ -13,9 +13,6 @@
 #import "KeychainWrapper.h"
 #import <Security/Security.h>
 
-// Define a constant to be used as the key for storing the master password in the keychain
-#define PM_MASTER_PASSWORD @"PasswordMakerMasterPassword"
-
 /*
  
  These are the default constants and their respective types,
@@ -70,11 +67,8 @@
         // This keychain item is a generic password.
         [genericPasswordQuery setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
 		
-        // The kSecAttrGeneric attribute is used to store a unique string that is used
-        // to easily identify and find this keychain item. The string is first
-        // converted to an NSData object:
-        NSData *keychainItemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char *)kKeychainItemIdentifier)];
-        [genericPasswordQuery setObject:keychainItemID forKey:(id)kSecAttrGeneric];
+        // The keychain item identifer is a unique entity (see below)
+        [genericPasswordQuery setObject:[self keychainItemID] forKey:(id)kSecAttrGeneric];
 		
         // Return the attributes of the first match only:
         [genericPasswordQuery setObject:(id)kSecMatchLimitOne forKey:(id)kSecMatchLimit];
@@ -90,7 +84,7 @@
         keychainErr = SecItemCopyMatching((CFDictionaryRef)genericPasswordQuery, (CFTypeRef *)&outDictionary);
         if (keychainErr == noErr) {
             // Convert the data dictionary into the format used by the view controller:
-            self.keychainData = [self secItemFormatToDictionary:outDictionary];		
+            self.keychainData = [self secItemFormatToDictionary:outDictionary];
         } else if (keychainErr == errSecItemNotFound) {
             // Put default values into the keychain if no matching keychain item is found:
             [self resetKeychainItem];
@@ -101,6 +95,15 @@
         [outDictionary release];
     }
     return self;	
+}
+
+- (NSData *)keychainItemID
+{
+	// The kSecAttrGeneric attribute is used to store a unique string that is used
+	// to easily identify and find this keychain item. The string is first
+	// converted to an NSData object:
+	NSData *keychainItemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char *)kKeychainItemIdentifier)];
+	return keychainItemID;
 }
 
 - (void)dealloc
@@ -142,6 +145,7 @@
     }
     
     // Default attributes for keychain item.
+	[keychainData setObject:[self keychainItemID] forKey:(id)kSecAttrGeneric];
     [keychainData setObject:@"" forKey:(id)kSecAttrAccount];
     [keychainData setObject:@"" forKey:(id)kSecAttrLabel];
     [keychainData setObject:@"" forKey:(id)kSecAttrDescription];
@@ -244,7 +248,6 @@
     else
     {
         // No previous item found; add the new one.
-		NSLog(@"%@", keychainData);
         result = SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainData], NULL);
 		NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
     }
@@ -255,12 +258,12 @@
 
 - (void)setPassword:(NSString *)newPassword
 {
-	[self setObject:newPassword forKey:PM_MASTER_PASSWORD];
+	[self setObject:newPassword forKey:(id)kSecValueData];
 }
 
 - (NSString *)password 
 {
-	return [self objectForKey:PM_MASTER_PASSWORD];
+	return [self objectForKey:(id)kSecValueData];
 }
 
 @end

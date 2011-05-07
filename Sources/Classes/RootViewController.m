@@ -32,8 +32,6 @@ static UIColor *thatTableTextColor ;
 
 #define PASSWORDTIMEOUT (60. * 5)
 
-//#define PASSWORDTIMEOUT 10
-
 #define FIELDORDER { masterPassword, inputURL, passLength, username, modifier, prefix, suffix, nil }
 
 @implementation RootViewController
@@ -78,9 +76,11 @@ static UIColor *thatTableTextColor ;
 	NSString* strmasterPass = nil ;
 	NSString* strinputUrl = nil ;
 	NSString* strusername = nil ;
-	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since its in the past its negative
+	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since it's in the past it's negative
 	if ( lastAccess != nil &&  secSinceLastAccess < PASSWORDTIMEOUT ) {
-		strmasterPass = [[NSUserDefaults standardUserDefaults] objectForKey:@"masterPass"] ;
+		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+		strmasterPass = [chainWrapper password];
+		[chainWrapper release];
 		strinputUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"inputUrl"] ;
 		strusername = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] ;
 	}
@@ -218,7 +218,11 @@ replacementString:(NSString *)string {
 }
 
 - (void) shouldSaveSettings:(UIApplication *)application {
-	[[NSUserDefaults standardUserDefaults] setObject:masterPassword.text forKey:@"masterPass"] ;
+	if (![masterPassword.text isEqualToString:@""]) {
+		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+		[chainWrapper setPassword:masterPassword.text];
+		[chainWrapper release];
+	}
 	[[NSUserDefaults standardUserDefaults] setObject:inputURL.text forKey:@"inputUrl"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastAccess"] ;

@@ -63,9 +63,13 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	AlertPrompt* ap = (AlertPrompt*)alertView;
-	[favorite addObject:ap.enteredText];
-	[self.tableView reloadData];
+    if ( buttonIndex == 1 ) {
+        AlertPrompt* ap = (AlertPrompt*)alertView;
+        if ( [ap.enteredText length] > 0 ) {
+            [favorite addObject:ap.enteredText];
+        }
+        [self.tableView reloadData];
+    }
 }
 
 /*

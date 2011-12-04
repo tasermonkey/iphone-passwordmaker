@@ -26,6 +26,7 @@
 #import "InputFavorites.h"
 
 static CGRect valueFrame ;
+static CGRect urlFrame ;
 static CGRect textViewFrame ;
 static CGRect buttonFrame ;
 static UIColor *thatTableTextColor ;
@@ -55,8 +56,9 @@ static UIColor *thatTableTextColor ;
 
 + (void) initialize {
 	valueFrame = CGRectMake(150, 10, 150, 38) ;
-	textViewFrame = CGRectMake(150, 10, 145, 30) ;
+	textViewFrame = CGRectMake(150, 10, 150, 30) ;
 	buttonFrame = CGRectMake(5, 5, 290, 33) ;
+    urlFrame = CGRectMake(130, 10, 200, 38) ;
 	thatTableTextColor = [[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] retain];
 
 }
@@ -91,6 +93,7 @@ static UIColor *thatTableTextColor ;
 	}
 	masterPassword = [self allocTextField:strmasterPass isPassword:YES] ;
 	inputURL = [self allocTextField:strinputUrl keyboardType:UIKeyboardTypeURL] ;
+    [inputURL setFrame:urlFrame];
 	passLength = [self allocTextField:[[NSNumber numberWithInteger:hasher.maxLen] stringValue]] ;
 	username = [self allocTextField:strusername] ;
 	modifier = [self allocTextField:hasher.counter] ;
@@ -175,15 +178,22 @@ static UIColor *thatTableTextColor ;
 	return ret ;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ( textField == inputURL ) {
+        
+    }
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 	[self updateGeneratePassword];
 }
 
 - (void) set_proper_keyboard {
 	UITextField* fieldOrder[] = FIELDORDER;
-	for (UITextField** itr = fieldOrder; *itr!=nil; ++itr) 
-		itr->returnKeyType = ( *(itr+1) != nil ? 
-							  UIReturnKeyNext : UIReturnKeyDone );
+	for (UITextField** itr = fieldOrder; *itr!=nil; ++itr) {
+        [(*itr) setReturnKeyType:( *(itr+1) != nil ? 
+                                  UIReturnKeyNext : UIReturnKeyDone )];
+    }
 
 }
 
@@ -285,7 +295,7 @@ replacementString:(NSString *)string {
 	cell.textLabel.text = str ;
 	cell.contentView.autoresizesSubviews = YES;
 	cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	fieldValue.frame = valueFrame;
+	fieldValue.frame = urlFrame;
 	fieldValue.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	fieldValue.autoresizesSubviews = YES;
 	[cell.contentView addSubview:fieldValue ];

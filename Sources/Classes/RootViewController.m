@@ -74,28 +74,11 @@ static UIColor *thatTableTextColor ;
 	self.navigationItem.title = @"Password Maker" ;
     [super viewDidLoad];
 	
-	NSDate* lastAccess = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastAccess"] ;
-	NSString* strmasterPass = nil ;
-	NSString* strinputUrl = nil ;
-	NSString* strusername = nil ;
-	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since it's in the past it's negative
-	if ( lastAccess != nil &&  secSinceLastAccess < PASSWORDTIMEOUT ) {
-		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
-		strmasterPass = [chainWrapper password];
-		[chainWrapper release];
-		strinputUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"inputUrl"] ;
-		strusername = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] ;
-	}
-	if (strmasterPass == nil || strinputUrl == nil || strusername == nil ) {
-		strmasterPass = @"" ;
-		strinputUrl = @"" ;
-		strusername = @"" ;
-	}
-	masterPassword = [self allocTextField:strmasterPass isPassword:YES] ;
-	inputURL = [self allocTextField:strinputUrl keyboardType:UIKeyboardTypeURL] ;
+	masterPassword = [self allocTextField:@"" isPassword:YES] ;
+	inputURL = [self allocTextField:@"" keyboardType:UIKeyboardTypeURL] ;
     [inputURL setFrame:urlFrame];
 	passLength = [self allocTextField:[[NSNumber numberWithInteger:hasher.maxLen] stringValue]] ;
-	username = [self allocTextField:strusername] ;
+	username = [self allocTextField:@""] ;
 	modifier = [self allocTextField:hasher.counter] ;
 	prefix = [self allocTextField:hasher.prefix] ;
 	suffix = [self allocTextField:hasher.suffix] ;
@@ -111,7 +94,7 @@ static UIColor *thatTableTextColor ;
 
 - (void) initCells {
 	tableCells = [[NSMutableArray alloc] init]	;
-	for ( int i = 0; i <= 12; ++i ) {
+	for ( int i = 0; i <= 13; ++i ) {
 		[tableCells addObject:[self cellForRow:i]];
 	}
 }
@@ -227,16 +210,52 @@ replacementString:(NSString *)string {
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void) shouldSaveSettings:(UIApplication *)application {
-	if (![masterPassword.text isEqualToString:@""]) {
+- (void) shouldLoadSettings:(UIApplication *)application {
+    NSDate* lastAccess = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastAccess"] ;
+    shouldSavePassword = [[NSUserDefaults standardUserDefaults] boolForKey:@"savePassword"] ;
+	NSString* strmasterPass = nil ;
+	NSString* strinputUrl = nil ;
+	NSString* strusername = nil ;
+	NSInteger secSinceLastAccess =  -[lastAccess timeIntervalSinceNow] ; // since it's in the past it's negative
+	if ( shouldSavePassword && lastAccess != nil &&  secSinceLastAccess < PASSWORDTIMEOUT ) {
 		KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
-		[chainWrapper setPassword:masterPassword.text];
+		strmasterPass = [chainWrapper password];
 		[chainWrapper release];
+		strinputUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"inputUrl"] ;
+		strusername = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] ;
 	}
+	if (strmasterPass == nil || strinputUrl == nil || strusername == nil ) {
+		strmasterPass = @"" ;
+		strinputUrl = @"" ;
+		strusername = @"" ;
+	}
+    if ( masterPassword != nil ) {
+        [masterPassword setText:strmasterPass];
+        [inputURL setText:strinputUrl];
+        [username setText:strusername];
+        [self updateGeneratePassword];
+    }
+    
+}
+
+- (void) shouldSaveSettings:(UIApplication *)application {
+    if ( shouldSavePassword ) {
+        if (![masterPassword.text isEqualToString:@""]) {
+            KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+            [chainWrapper setPassword:masterPassword.text];
+            [chainWrapper release];
+        }
+	} else {
+        KeychainWrapper *chainWrapper = [[KeychainWrapper alloc] init];
+        [chainWrapper resetKeychainItem];
+        [masterPassword setText:@""];
+        [chainWrapper release];
+    }
 	[[NSUserDefaults standardUserDefaults] setObject:inputURL.text forKey:@"inputUrl"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:@"username"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastAccess"] ;
 	[[NSUserDefaults standardUserDefaults] setObject:(NSArray*)favorites forKey:@"favorites"] ;
+	[[NSUserDefaults standardUserDefaults] setBool:shouldSavePassword forKey:@"savePassword"] ;
 }
 
 - (void)viewDidUnload {
@@ -286,6 +305,22 @@ replacementString:(NSString *)string {
 	cell.accessoryType = acc ;
     return cell;	
 }
+
+- (UITableViewCell*) makeCheckCellWithLabel:(NSString*)str
+							isChecked:(BOOL)checked {
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+													reuseIdentifier:nil] autorelease];
+    
+    
+    // Set up the cell...
+	cell.textLabel.text = str ;
+	cell.detailTextLabel.text = @"" ;
+	cell.detailTextLabel.textAlignment = UITextAlignmentLeft;
+	cell.selectionStyle = UITableViewCellSelectionStyleNone ;
+	cell.accessoryType = checked ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone; ;
+    return cell;	
+}
+
 
 - (UITableViewCell*) makeInputUrlCellWithLabel:(NSString*)str
 						 WithTextField:(UITextField*)fieldValue accessType:(UITableViewCellAccessoryType)acc {
@@ -347,9 +382,12 @@ replacementString:(NSString *)string {
 				UITableViewCell* tvc = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
 											  reuseIdentifier:nil] autorelease];
 				tvc.textLabel.text = @"Copy password";
-				tvc.textLabel.textAlignment = UITextAlignmentCenter;				
+				tvc.textLabel.textAlignment = UITextAlignmentCenter;
 			return tvc ;
 		}
+        case 13: {
+            return [self makeCheckCellWithLabel:@"Remember Password" isChecked:FALSE];
+        }
 		default: return nil ;
 	}
 	return [self makeCellWithLabel:str andContentView:v] ;	
@@ -376,6 +414,11 @@ replacementString:(NSString *)string {
 			cell.detailTextLabel.text = pn ;
 			break;
 		}
+        case 13: {
+            cell.accessoryType = shouldSavePassword ?UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+            break;
+        }
+    
 	}
 }
 
@@ -389,7 +432,7 @@ replacementString:(NSString *)string {
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 13;
+    return 14;
 }
 
 - (NSString*) getCharacterSelDesc {
@@ -452,7 +495,11 @@ replacementString:(NSString *)string {
 		// remove the row highlight
 		[aTableView deselectRowAtIndexPath:indexPath animated:YES];
 		[self copyPasswordClicked];
-	}
+	} else if ( indexPath.row == 13 && indexPath.section == 0 ) {
+        shouldSavePassword = !shouldSavePassword;
+		[aTableView deselectRowAtIndexPath:indexPath animated:YES];
+        [aTableView reloadData];
+    }
 }
 
 - (IBAction) copyPasswordClicked {
@@ -488,6 +535,7 @@ replacementString:(NSString *)string {
 
 	[self update_password_fields_color];
 }
+
 - (void) update_password_fields_color { 
 	if ( [UIApplication getAppDelegate].noMasterPasswordStored ) {
 		masterPassword.textColor = [UIColor blackColor] ;

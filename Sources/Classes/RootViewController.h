@@ -34,6 +34,7 @@
 	Hasher* hasher ;
 	BOOL masterPasswordHashMatches ;
 	NSMutableArray* favorites;
+    BOOL shouldSavePassword ;
 }
 - (id) initWithHasher:(Hasher*)hashObj ;
 
@@ -57,6 +58,7 @@
 - (NSString*) getCharacterSelDesc ;
 
 - (void) shouldSaveSettings:(UIApplication *)application ;
+- (void) shouldLoadSettings:(UIApplication *)application ;
 
 - (IBAction) updateGeneratePassword ;
 + (NSString*) LeetEnumToString:(enum leetType)lt WithLevel:(NSInteger)level;

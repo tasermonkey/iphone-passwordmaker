@@ -24,5 +24,7 @@
 	<string></string>
 	<key>profiles</key>
 	<array/>
+	<key>savePassword</key>
+	<true/>
 </dict>
 </plist>

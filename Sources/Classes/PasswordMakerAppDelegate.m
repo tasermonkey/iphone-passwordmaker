@@ -31,9 +31,9 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-	/* Handle transition from unencrypted password storage to Keychain Services. */
+- (void)applicationDidBecomeActive:(UIApplication *)application {    
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    /* Handle transition from unencrypted password storage to Keychain Services. */
 	NSString *oldMasterPassword = [userDefaults objectForKey:@"masterPass"];
 	if (oldMasterPassword != nil) {
 		[userDefaults removeObjectForKey:@"masterPass"];
@@ -68,8 +68,15 @@
 	navigationController = [[UINavigationController alloc] 
 							initWithRootViewController:rootViewController] ;
 	self.navigationController = navigationController ;
+    [rootViewController shouldLoadSettings:application];
 	[window addSubview:[navigationController view]] ;
     [window makeKeyAndVisible] ;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // since iOS4 this function is always called, whereas applicationDidFinishLaunching 
+    // only when it was first launched
+    [rootViewController shouldLoadSettings:application];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

@@ -426,7 +426,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -436,7 +440,7 @@
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
-				PROVISIONING_PROFILE = "6C6FC4D6-3998-4214-A18F-D6D5CD1D7116";
+				PROVISIONING_PROFILE = "194B7DD8-E21B-4940-B887-97323DBC0C22";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -445,7 +449,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
@@ -453,7 +461,7 @@
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
-				PROVISIONING_PROFILE = "6C6FC4D6-3998-4214-A18F-D6D5CD1D7116";
+				PROVISIONING_PROFILE = "194B7DD8-E21B-4940-B887-97323DBC0C22";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -461,8 +469,11 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = used;
@@ -479,8 +490,11 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -494,7 +508,10 @@
 		D72A44CF110E9AE300A1720B /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -512,7 +529,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
@@ -520,7 +541,7 @@
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
-				PROVISIONING_PROFILE = "6C6FC4D6-3998-4214-A18F-D6D5CD1D7116";
+				PROVISIONING_PROFILE = "194B7DD8-E21B-4940-B887-97323DBC0C22";
 				SDKROOT = iphoneos;
 			};
 			name = AppStore;
@@ -616,7 +637,10 @@
 		D7BBC2EC111F1CB400E3ABC2 /* AdHoc Distro */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -633,7 +657,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Stapleton (3NA5WMA7X9)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Stapleton";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/PasswordMaker_Prefix.pch;
@@ -641,7 +669,7 @@
 				INFOPLIST_FILE = "PasswordMaker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = PasswordMaker;
-				PROVISIONING_PROFILE = "6C6FC4D6-3998-4214-A18F-D6D5CD1D7116";
+				PROVISIONING_PROFILE = "194B7DD8-E21B-4940-B887-97323DBC0C22";
 				SDKROOT = iphoneos;
 			};
 			name = "AdHoc Distro";

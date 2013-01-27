@@ -16,6 +16,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		A4B6320D12EFF87000CBC08C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6320C12EFF87000CBC08C /* KeychainWrapper.m */; };
 		A4C33CA313329EC3007048C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C33CA213329EC3007048C6 /* Security.framework */; };
+		C9167BB216A7B5F90016D858 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9167BB116A7B5F90016D858 /* Default-568h@2x.png */; };
 		D701F9E11239A717003AD3F5 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DA1239A717003AD3F5 /* Icon-Small@2x.png */; };
 		D701F9E21239A717003AD3F5 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DB1239A717003AD3F5 /* Icon-Small-50.png */; };
 		D701F9E31239A717003AD3F5 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D701F9DC1239A717003AD3F5 /* Icon-Small.png */; };
@@ -65,6 +66,7 @@
 		A4B6320B12EFF87000CBC08C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		A4B6320C12EFF87000CBC08C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		A4C33CA213329EC3007048C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C9167BB116A7B5F90016D858 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D701F9DA1239A717003AD3F5 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		D701F9DB1239A717003AD3F5 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		D701F9DC1239A717003AD3F5 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9167BB116A7B5F90016D858 /* Default-568h@2x.png */,
 				D78778621102F2FC00EEA918 /* Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Sources */,
@@ -341,6 +344,7 @@
 				D701F9E61239A717003AD3F5 /* iTunesArtwork.png in Resources */,
 				D701F9E71239A717003AD3F5 /* Icon-72.png in Resources */,
 				D77FE10712515B9400C1B718 /* iPadMainWindow.xib in Resources */,
+				C9167BB216A7B5F90016D858 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

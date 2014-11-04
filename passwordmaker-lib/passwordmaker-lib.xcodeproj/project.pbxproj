@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D77FBD8219CFBA13004E8A63 /* passwordmaker_lib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D77FBD8119CFBA13004E8A63 /* passwordmaker_lib.h */; };
+		D77FBD8419CFBA13004E8A63 /* passwordmaker_lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D77FBD8319CFBA13004E8A63 /* passwordmaker_lib.m */; };
+		D77FBD9819CFBAE5004E8A63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FBD9719CFBAE5004E8A63 /* Account.swift */; };
+		D77FBD9A19CFBC44004E8A63 /* AlgorithmType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FBD9919CFBC44004E8A63 /* AlgorithmType.swift */; };
+		D77FBD9C19CFC049004E8A63 /* Leet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FBD9B19CFC049004E8A63 /* Leet.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D77FBD7C19CFBA13004E8A63 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D77FBD8219CFBA13004E8A63 /* passwordmaker_lib.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D77FBD7E19CFBA13004E8A63 /* libpasswordmaker-lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpasswordmaker-lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77FBD8119CFBA13004E8A63 /* passwordmaker_lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = passwordmaker_lib.h; sourceTree = "<group>"; };
+		D77FBD8319CFBA13004E8A63 /* passwordmaker_lib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = passwordmaker_lib.m; sourceTree = "<group>"; };
+		D77FBD8919CFBA13004E8A63 /* passwordmaker-libTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "passwordmaker-libTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77FBD8C19CFBA13004E8A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D77FBD9619CFBAE5004E8A63 /* passwordmaker-lib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "passwordmaker-lib-Bridging-Header.h"; sourceTree = "<group>"; };
+		D77FBD9719CFBAE5004E8A63 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		D77FBD9919CFBC44004E8A63 /* AlgorithmType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmType.swift; sourceTree = "<group>"; };
+		D77FBD9B19CFC049004E8A63 /* Leet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leet.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D77FBD7B19CFBA13004E8A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D77FBD8619CFBA13004E8A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D77FBD7519CFBA13004E8A63 = {
+			isa = PBXGroup;
+			children = (
+				D77FBD9519CFBA34004E8A63 /* passwordmaker-lib */,
+				D77FBD7F19CFBA13004E8A63 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D77FBD7F19CFBA13004E8A63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D77FBD7E19CFBA13004E8A63 /* libpasswordmaker-lib.a */,
+				D77FBD8919CFBA13004E8A63 /* passwordmaker-libTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D77FBD8019CFBA13004E8A63 /* passwordmaker-lib */ = {
+			isa = PBXGroup;
+			children = (
+				D77FBD8119CFBA13004E8A63 /* passwordmaker_lib.h */,
+				D77FBD8319CFBA13004E8A63 /* passwordmaker_lib.m */,
+				D77FBD9719CFBAE5004E8A63 /* Account.swift */,
+				D77FBD9919CFBC44004E8A63 /* AlgorithmType.swift */,
+				D77FBD9B19CFC049004E8A63 /* Leet.swift */,
+				D77FBD9619CFBAE5004E8A63 /* passwordmaker-lib-Bridging-Header.h */,
+			);
+			path = "passwordmaker-lib";
+			sourceTree = "<group>";
+		};
+		D77FBD8A19CFBA13004E8A63 /* passwordmaker-libTests */ = {
+			isa = PBXGroup;
+			children = (
+				D77FBD8B19CFBA13004E8A63 /* Supporting Files */,
+			);
+			path = "passwordmaker-libTests";
+			sourceTree = "<group>";
+		};
+		D77FBD8B19CFBA13004E8A63 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D77FBD8C19CFBA13004E8A63 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D77FBD9519CFBA34004E8A63 /* passwordmaker-lib */ = {
+			isa = PBXGroup;
+			children = (
+				D77FBD8A19CFBA13004E8A63 /* passwordmaker-libTests */,
+				D77FBD8019CFBA13004E8A63 /* passwordmaker-lib */,
+			);
+			name = "passwordmaker-lib";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D77FBD7D19CFBA13004E8A63 /* passwordmaker-lib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D77FBD8F19CFBA13004E8A63 /* Build configuration list for PBXNativeTarget "passwordmaker-lib" */;
+			buildPhases = (
+				D77FBD7A19CFBA13004E8A63 /* Sources */,
+				D77FBD7B19CFBA13004E8A63 /* Frameworks */,
+				D77FBD7C19CFBA13004E8A63 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "passwordmaker-lib";
+			productName = "passwordmaker-lib";
+			productReference = D77FBD7E19CFBA13004E8A63 /* libpasswordmaker-lib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D77FBD8819CFBA13004E8A63 /* passwordmaker-libTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D77FBD9219CFBA13004E8A63 /* Build configuration list for PBXNativeTarget "passwordmaker-libTests" */;
+			buildPhases = (
+				D77FBD8519CFBA13004E8A63 /* Sources */,
+				D77FBD8619CFBA13004E8A63 /* Frameworks */,
+				D77FBD8719CFBA13004E8A63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "passwordmaker-libTests";
+			productName = "passwordmaker-libTests";
+			productReference = D77FBD8919CFBA13004E8A63 /* passwordmaker-libTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D77FBD7619CFBA13004E8A63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = tasermonkeys;
+				TargetAttributes = {
+					D77FBD7D19CFBA13004E8A63 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					D77FBD8819CFBA13004E8A63 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+				};
+			};
+			buildConfigurationList = D77FBD7919CFBA13004E8A63 /* Build configuration list for PBXProject "passwordmaker-lib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D77FBD7519CFBA13004E8A63;
+			productRefGroup = D77FBD7F19CFBA13004E8A63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D77FBD7D19CFBA13004E8A63 /* passwordmaker-lib */,
+				D77FBD8819CFBA13004E8A63 /* passwordmaker-libTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D77FBD8719CFBA13004E8A63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D77FBD7A19CFBA13004E8A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D77FBD9A19CFBC44004E8A63 /* AlgorithmType.swift in Sources */,
+				D77FBD8419CFBA13004E8A63 /* passwordmaker_lib.m in Sources */,
+				D77FBD9819CFBAE5004E8A63 /* Account.swift in Sources */,
+				D77FBD9C19CFC049004E8A63 /* Leet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D77FBD8519CFBA13004E8A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D77FBD8D19CFBA13004E8A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D77FBD8E19CFBA13004E8A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D77FBD9019CFBA13004E8A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "passwordmaker-lib/passwordmaker-lib-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D77FBD9119CFBA13004E8A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "passwordmaker-lib/passwordmaker-lib-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		D77FBD9319CFBA13004E8A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "passwordmaker-libTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D77FBD9419CFBA13004E8A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "passwordmaker-libTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D77FBD7919CFBA13004E8A63 /* Build configuration list for PBXProject "passwordmaker-lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D77FBD8D19CFBA13004E8A63 /* Debug */,
+				D77FBD8E19CFBA13004E8A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D77FBD8F19CFBA13004E8A63 /* Build configuration list for PBXNativeTarget "passwordmaker-lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D77FBD9019CFBA13004E8A63 /* Debug */,
+				D77FBD9119CFBA13004E8A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D77FBD9219CFBA13004E8A63 /* Build configuration list for PBXNativeTarget "passwordmaker-libTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D77FBD9319CFBA13004E8A63 /* Debug */,
+				D77FBD9419CFBA13004E8A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D77FBD7619CFBA13004E8A63 /* Project object */;
+}
